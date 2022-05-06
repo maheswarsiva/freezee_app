@@ -114,6 +114,10 @@ class _SigninState extends State<Signin> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
+                            side: const BorderSide(
+                                color: Color(0xFF65019A), width: 5),
+                            shadowColor: const Color(0xFF65019A),
+                            elevation: 10,
                             primary: const Color(0xFF65019A),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15.0),
@@ -162,9 +166,9 @@ class _SigninState extends State<Signin> {
                           },
                           style: ElevatedButton.styleFrom(
                             side: const BorderSide(
-                              width: 1.0,
-                              color: Color(0xFF65019A),
-                            ),
+                                color: Color(0xFF65019A), width: 5),
+                            shadowColor: const Color(0xFF65019A),
+                            elevation: 10,
                             primary: const Color(0xFF2B2B2B),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15.0),
