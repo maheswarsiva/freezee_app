@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:freeze_app/SignIn/otp_screen.dart';
+import 'package:freeze_app/SignIn/password_setup.dart';
 import 'package:freeze_app/SignIn/register.dart';
 import 'package:freeze_app/SignIn/signin.dart';
 
@@ -13,11 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Signin(),
+      home: const OtpScreen(),
     );
   }
 }

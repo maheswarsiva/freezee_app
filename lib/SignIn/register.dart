@@ -28,20 +28,23 @@ class _RegisterState extends State<Register> {
           ),
           const Positioned(
               top: 185,
-              left: 85,
+              left: 65,
               child: Text(
-                "Welcome to RITE Foundation",
+                "Welcome to the RITE Foundation",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 22,
+                  color: Color(0xFF65019A),
+                  fontWeight: FontWeight.bold,
                 ),
               )),
           const Positioned(
-              top: 205,
+              top: 215,
               left: 125,
               child: Text(
                 "Enter your details",
                 style: TextStyle(
                   fontSize: 20,
+                  color: Color(0xFF939F9C),
                 ),
               )),
           Column(
@@ -63,102 +66,108 @@ class _RegisterState extends State<Register> {
                         top: 25,
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: 350,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF2B2B2B),
-                      ),
-                      child: const TextField(
+                      child: TextField(
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person_outline_rounded,
+                          filled: true,
+                          fillColor: const Color(0xFF2B2B2B),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          prefixIcon: const Icon(Icons.person_outline_rounded,
                               color: Color(0xFF939F9C)),
                           labelText: 'Name',
-                          labelStyle: TextStyle(color: Color(0xFF939F9C)),
+                          labelStyle: const TextStyle(color: Color(0xFF939F9C)),
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Container(
+                    SizedBox(
                       width: 350,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF2B2B2B),
-                      ),
-                      child: const TextField(
+                      child: TextField(
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email_rounded,
+                          filled: true,
+                          fillColor: const Color(0xFF2B2B2B),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          prefixIcon: const Icon(Icons.email_rounded,
                               color: Color(0xFF939F9C)),
                           labelText: 'Email',
-                          labelStyle: TextStyle(color: Color(0xFF939F9C)),
+                          labelStyle: const TextStyle(color: Color(0xFF939F9C)),
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Container(
+                    SizedBox(
                       width: 350,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF2B2B2B),
-                      ),
-                      child: const TextField(
+                      child: TextField(
                         decoration: InputDecoration(
+                          filled: true,
+                          fillColor: const Color(0xFF2B2B2B),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
                           prefixIcon:
-                              Icon(Icons.feed, color: Color(0xFF939F9C)),
+                              const Icon(Icons.feed, color: Color(0xFF939F9C)),
                           labelText: 'Professional Details',
-                          labelStyle: TextStyle(color: Color(0xFF939F9C)),
+                          labelStyle: const TextStyle(color: Color(0xFF939F9C)),
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Container(
+                    SizedBox(
                       width: 350,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF2B2B2B),
-                      ),
-                      child: const TextField(
+                      child: TextField(
                         decoration: InputDecoration(
-                          labelText: 'Aadhar Card',
-                          labelStyle: TextStyle(color: Color(0xFF939F9C)),
-                          prefixIcon: Icon(Icons.text_snippet,
+                          filled: true,
+                          fillColor: const Color(0xFF2B2B2B),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          prefixIcon: const Icon(Icons.text_snippet_rounded,
                               color: Color(0xFF939F9C)),
+                          labelText: 'Aadhar Card',
+                          labelStyle: const TextStyle(color: Color(0xFF939F9C)),
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Container(
+                    SizedBox(
                       width: 350,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF2B2B2B),
-                      ),
-                      child: const TextField(
+                      child: TextField(
                         decoration: InputDecoration(
-                          prefixIcon:
-                              Icon(Icons.credit_card, color: Color(0xFF939F9C)),
+                          filled: true,
+                          fillColor: const Color(0xFF2B2B2B),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          prefixIcon: const Icon(Icons.credit_card_rounded,
+                              color: Color(0xFF939F9C)),
                           labelText: 'PAN Card',
-                          labelStyle: TextStyle(color: Color(0xFF939F9C)),
+                          labelStyle: const TextStyle(color: Color(0xFF939F9C)),
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Container(
+                    SizedBox(
                       width: 350,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF2B2B2B),
-                      ),
-                      child: const TextField(
+                      child: TextField(
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.phone_android_rounded,
+                          filled: true,
+                          fillColor: const Color(0xFF2B2B2B),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          prefixIcon: const Icon(Icons.phone_android_rounded,
                               color: Color(0xFF939F9C)),
                           labelText: 'Mobile Number',
-                          labelStyle: TextStyle(color: Color(0xFF939F9C)),
+                          labelStyle: const TextStyle(color: Color(0xFF939F9C)),
                         ),
                       ),
                     ),
@@ -183,7 +192,13 @@ class _RegisterState extends State<Register> {
                             ),
                           ),
                           // ignore: sized_box_for_whitespace
-                          child: const Text("Register")),
+                          child: const Text(
+                            "Register",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
                     ),
                   ],
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freeze_app/SignIn/otp_screen.dart';
 
 class PasswordSetup extends StatefulWidget {
   const PasswordSetup({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _PasswordSetupState extends State<PasswordSetup> {
       body: Stack(
         children: [
           Positioned(
-            top: 75,
+            top: 250,
             left: 150,
             child: Container(
               height: 100,
@@ -26,23 +27,112 @@ class _PasswordSetupState extends State<PasswordSetup> {
             ),
           ),
           const Positioned(
-              top: 185,
-              left: 85,
+              top: 370,
+              left: 65,
               child: Text(
-                "Welcome to RITE Foundation",
+                "Welcome to the RITE Foundation",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 22,
+                  color: Color(0xFF65019A),
+                  fontWeight: FontWeight.bold,
                 ),
               )),
           const Positioned(
-              top: 205,
-              left: 125,
+              top: 400,
+              left: 100,
               child: Text(
-                "Enter your details",
+                "Enter your Mobile Number",
                 style: TextStyle(
                   fontSize: 20,
+                  color: Color(0xFF939F9C),
                 ),
               )),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              // ignore: sized_box_for_whitespace
+              Container(
+                  height: 300,
+                  width: double.maxFinite,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20)),
+                    color: Color(0xFF393838),
+                  ),
+                  child: Column(children: [
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        top: 45,
+                      ),
+                    ),
+                    // ignore: sized_box_for_whitespace
+                    SizedBox(
+                      width: 350,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: const Color(0xFF2B2B2B),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          prefixIcon: const Icon(Icons.vpn_key,
+                              color: Color(0xFF939F9C)),
+                          labelText: 'New Password',
+                          labelStyle: const TextStyle(color: Color(0xFF939F9C)),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      width: 350,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: const Color(0xFF2B2B2B),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          prefixIcon: const Icon(Icons.vpn_key,
+                              color: Color(0xFF939F9C)),
+                          labelText: 'Re-Type Password',
+                          labelStyle: const TextStyle(color: Color(0xFF939F9C)),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+
+                    SizedBox(
+                      height: 60,
+                      width: 350,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const OtpScreen()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: const Color(0xFF65019A),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                          ),
+                          // ignore: sized_box_for_whitespace
+                          child: const Text(
+                            "Create Password",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
+                    ),
+                  ])),
+            ],
+          )
         ],
       ),
     );

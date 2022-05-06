@@ -29,11 +29,13 @@ class _SigninState extends State<Signin> {
           ),
           const Positioned(
               top: 210,
-              left: 95,
+              left: 65,
               child: Text(
                 "Welcome to the RITE Foundation",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 22,
+                  color: Color(0xFF65019A),
+                  fontWeight: FontWeight.bold,
                 ),
               )),
           const Positioned(
@@ -41,9 +43,7 @@ class _SigninState extends State<Signin> {
               left: 125,
               child: Text(
                 "Sign in to continue",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+                style: TextStyle(fontSize: 20, color: Color(0xFF939F9C)),
               )),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -65,35 +65,37 @@ class _SigninState extends State<Signin> {
                       ),
                     ),
                     // ignore: sized_box_for_whitespace
-                    Container(
+                    SizedBox(
                       width: 350,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF2B2B2B),
-                      ),
-                      child: const TextField(
+                      child: TextField(
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person_outline_rounded,
+                          filled: true,
+                          fillColor: const Color(0xFF2B2B2B),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          prefixIcon: const Icon(Icons.person_outline_rounded,
                               color: Color(0xFF939F9C)),
                           labelText: 'UserName',
-                          labelStyle: TextStyle(color: Color(0xFF939F9C)),
+                          labelStyle: const TextStyle(color: Color(0xFF939F9C)),
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 15,
                     ),
-                    Container(
+                    SizedBox(
                       width: 350,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF2B2B2B),
-                      ),
-                      child: const TextField(
+                      child: TextField(
                         obscureText: true,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.lock_outline,
+                          filled: true,
+                          fillColor: const Color(0xFF2B2B2B),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          prefixIcon: const Icon(Icons.lock_outline,
                               color: Color(0xFF939F9C)),
                           labelText: 'Password',
-                          labelStyle: TextStyle(color: Color(0xFF939F9C)),
+                          labelStyle: const TextStyle(color: Color(0xFF939F9C)),
                         ),
                       ),
                     ),
@@ -159,7 +161,11 @@ class _SigninState extends State<Signin> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: const Color(0xFF65019A),
+                            side: const BorderSide(
+                              width: 1.0,
+                              color: Color(0xFF65019A),
+                            ),
+                            primary: const Color(0xFF2B2B2B),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15.0),
                             ),
@@ -173,19 +179,32 @@ class _SigninState extends State<Signin> {
                       },
                       child: const Text(
                         'Forgot Password?',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF65019A),
+                        ),
                       ),
                     ),
                     Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text("Don't Have an account?"),
+                          const Text(
+                            "Don't Have an account?",
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color(0xFF939F9C),
+                            ),
+                          ),
                           TextButton(
                               onPressed: () {},
                               child: const Text(
                                 'Register',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF65019A)),
                               ))
                         ],
                       ),
