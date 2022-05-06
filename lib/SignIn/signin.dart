@@ -31,7 +31,7 @@ class _SigninState extends State<Signin> {
               top: 210,
               left: 95,
               child: Text(
-                "Welcome to RITE Foundation",
+                "Welcome to the RITE Foundation",
                 style: TextStyle(
                   fontSize: 20,
                 ),
