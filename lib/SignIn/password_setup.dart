@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freeze_app/SignIn/otp_screen.dart';
+
 
 class PasswordSetup extends StatefulWidget {
   const PasswordSetup({Key? key}) : super(key: key);
@@ -109,13 +109,13 @@ class _PasswordSetupState extends State<PasswordSetup> {
                       width: 350,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const OtpScreen()),
-                            );
+
                           },
                           style: ElevatedButton.styleFrom(
+                            side: const BorderSide(
+                                color: Color(0xFF65019A), width: 5),
+                            shadowColor: const Color(0xFF65019A),
+                            elevation: 10,
                             primary: const Color(0xFF65019A),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15.0),
