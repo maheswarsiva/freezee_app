@@ -1,13 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:freeze_app/SignIn/password_setup.dart';
 
 import 'package:freeze_app/SignIn/register.dart';
 import 'package:freeze_app/app_color.dart';
+
 import 'package:freeze_app/widgets/logo.dart';
 import 'package:freeze_app/widgets/stackContainer.dart';
 import 'package:freeze_app/widgets/textfield.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Bottomnavpage/bottom_nav.dart';
+import '../Bottomnavpage/List_of_pages/Innovation_page.dart';
 
 class Signin extends StatefulWidget {
   const Signin({Key? key}) : super(key: key);
@@ -54,10 +60,11 @@ backgroundColor: AppColors.scaffoldBG,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Textfield1(titlle: 'EMAIL', icon: Icon(Icons.email_outlined,color:  Color(0xFF939F9C),)),
                 SizedBox(height: 20.h,),
+                Textfield1(titlle: 'EMAIL', icon: Icon(Icons.email_outlined,color:  Color(0xFF939F9C),)),
+              //  SizedBox(height: 20.h,),
                 Textfield1(titlle: 'PASSWORD', icon: Icon(Icons.vpn_key_outlined,color:  Color(0xFF939F9C),)),
-
+                SizedBox(height: 20.h,),
                 InkWell(
                   child: Container(
                     height: 44.h,
@@ -108,10 +115,15 @@ backgroundColor: AppColors.scaffoldBG,
 
 
                   ),
-                  onTap: (){},
+                  onTap: (){
+
+
+
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>BottomNav()));
+                  },
 
                 ),
-
+                SizedBox(height: 10.h,),
 
               Row(children: <Widget>[
                         Expanded(
@@ -138,6 +150,7 @@ backgroundColor: AppColors.scaffoldBG,
                               )),
                         ),
                       ]),
+                SizedBox(height: 10.h,),
 
                 InkWell(
                   child: Container(
@@ -145,46 +158,27 @@ backgroundColor: AppColors.scaffoldBG,
                       width: 290.w,
 
                       decoration: BoxDecoration(
+
+
                           borderRadius: BorderRadius.circular(20.w),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Color(0xffA202F6),
-                                blurRadius: 7.w,
-                                offset: Offset(1, 1)),
-                            BoxShadow(
-                                color:Color(0xff28003),
-                                blurRadius: 2.w,
-                                offset: Offset(-1, -1)),
-                            BoxShadow(
-                                color: Color(0xff28003E),
-                                blurRadius: 2.w,
-                                offset: Offset(3, -3)),
 
-                            BoxShadow(
-                                color: Color(0xff28003E),
-                                blurRadius: 2.w,
-                                offset: Offset(-3, 3)),
-                            BoxShadow(
-                                color: Color(0xffA202F6),
-                                blurRadius: 2.w,
-                                //blurStyle: BlurStyle.inner,
-                                offset: Offset(-3, -3)),
-                            BoxShadow(
-                                color: Color(0xff28003E),
-                                blurRadius: 2.w,
-                                //  blurStyle: BlurStyle.inner,
-                                offset: Offset(3, 3)),
+border: Border.all(color: Color(0xffDE7FFF)),
 
-
-
-                          ],
-
-
-                          color: Color(0xff65019A)
+                          color: Color(0xff2B2B2B)
                       ),
-                      child:Center(
-                        child:   Text('Sign In',style: GoogleFonts.montserrat(color: Colors.white,fontSize: 14.sp),) ,
-                      )
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+Image.asset('assets/images/google.png'),
+                      //  SvgPicture.asset('assets/images/google.svg'),
+                          Text('Login with Google',style: GoogleFonts.montserrat(color: Colors.white,fontSize: 14.sp),) ,
+
+                        ],
+                      ),
+
+
+
 
 
 
@@ -193,6 +187,50 @@ backgroundColor: AppColors.scaffoldBG,
 
                 ),
 
+              TextButton(
+                        onPressed: () {
+                          //forgot password screen
+
+                          Navigator.push(context, MaterialPageRoute(builder: (_)=>PasswordSetup()));
+                        },
+                        child:  Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.normal,
+                            color: Color(0xFF65019A),
+                          ),
+                        ),
+                      ),
+              Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                             Text(
+                              "Don't Have an account?",
+                              style: TextStyle(
+                                fontSize: 12.sp,
+                                color: Color(0xFF939F9C),
+                              ),
+                            ),
+                            TextButton(
+                                onPressed: () {
+
+
+                                  Navigator.push(context, MaterialPageRoute(builder: (_)=>Register()));
+                                },
+                                child:  Text(
+                                  'Register',
+                                  style: TextStyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.normal,
+                                      color: Color(0xFF65019A)),
+                                ))
+                          ],
+                        ),
+                      ),
+
+                SizedBox(height: 10.h,),
 
               ],
             ) ,),
