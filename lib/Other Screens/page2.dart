@@ -34,10 +34,38 @@ class _Page2State extends State<Page2> {
         children: [
           Container(
             height: 595.h,
-            width: 358.w,
-            margin: EdgeInsets.only(top: 18.06),
+            width: 340.w,
+            margin: EdgeInsets.only(top: 18.06, left: 12.9),
             decoration: BoxDecoration(
               color: Color(0xFF393838),
+              boxShadow: [
+                BoxShadow(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    blurRadius: 7.w,
+                    offset: Offset(1, 1)),
+                BoxShadow(
+                    color: Color(0xff28003),
+                    blurRadius: 2.w,
+                    offset: Offset(-1, -1)),
+                BoxShadow(
+                    color: Color.fromARGB(0, 40, 0, 62),
+                    blurRadius: 2.w,
+                    offset: Offset(3, -3)),
+                BoxShadow(
+                    color: Color.fromARGB(0, 40, 0, 62),
+                    blurRadius: 2.w,
+                    offset: Offset(-3, 3)),
+                BoxShadow(
+                    color: Color.fromARGB(255, 1, 1, 1),
+                    blurRadius: 2.w,
+                    //blurStyle: BlurStyle.inner,
+                    offset: Offset(-3, -3)),
+                BoxShadow(
+                    color: Color.fromARGB(0, 40, 0, 62),
+                    blurRadius: 2.w,
+                    //  blurStyle: BlurStyle.inner,
+                    offset: Offset(3, 3)),
+              ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,

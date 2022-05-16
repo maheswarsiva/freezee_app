@@ -38,27 +38,33 @@ class _Page5State extends State<Page5> {
         decoration: BoxDecoration(
           color: Color(0xFF393838),
           borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
-                color: Color.fromRGBO(31, 31, 31, 0.9),
-                spreadRadius: -25,
-                offset: Offset(5, 5)),
+                color: Color.fromARGB(255, 0, 0, 0),
+                blurRadius: 7.w,
+                offset: Offset(1, 1)),
             BoxShadow(
-                color: Color.fromRGBO(51, 51, 51, 0.9),
-                spreadRadius: -10,
-                offset: Offset(-5, -5)),
-            BoxShadow(
-                color: Color.fromRGBO(31, 31, 31, 0.2),
-                spreadRadius: -10,
-                offset: Offset(5, -5)),
-            BoxShadow(
-                color: Color.fromRGBO(31, 31, 31, 0.2),
-                spreadRadius: -10,
-                offset: Offset(-5, 5)),
-            BoxShadow(
-                color: Color.fromRGBO(31, 31, 31, 0.5),
-                spreadRadius: -2,
+                color: Color(0xff28003),
+                blurRadius: 2.w,
                 offset: Offset(-1, -1)),
+            BoxShadow(
+                color: Color.fromARGB(0, 40, 0, 62),
+                blurRadius: 2.w,
+                offset: Offset(3, -3)),
+            BoxShadow(
+                color: Color.fromARGB(0, 40, 0, 62),
+                blurRadius: 2.w,
+                offset: Offset(-3, 3)),
+            BoxShadow(
+                color: Color.fromARGB(255, 1, 1, 1),
+                blurRadius: 2.w,
+                //blurStyle: BlurStyle.inner,
+                offset: Offset(-3, -3)),
+            BoxShadow(
+                color: Color.fromARGB(0, 40, 0, 62),
+                blurRadius: 2.w,
+                //  blurStyle: BlurStyle.inner,
+                offset: Offset(3, 3)),
           ],
         ),
         child: Column(
@@ -84,8 +90,9 @@ class _Page5State extends State<Page5> {
                     width: 170.w,
                     //margin: EdgeInsets.only(top: 32),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.w),
-                        color: Color(0xFF292929)),
+                      borderRadius: BorderRadius.circular(10.w),
+                      color: Color(0xFF292929),
+                    ),
                     child: TextFormField(
                       decoration: InputDecoration(
                         contentPadding:
