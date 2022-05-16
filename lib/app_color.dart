@@ -25,4 +25,5 @@ class AppColors {
   static const Color neutralGrey = Color(0xFF9098B1);
   static const Color otpBoxColor = Color(0xFFF6F6F6);
   static const Color hintTextColor = Color.fromRGBO(34, 42, 39, 0.5);
+  static const Color buttonBgColor = Color(0xFF65019A);
 }

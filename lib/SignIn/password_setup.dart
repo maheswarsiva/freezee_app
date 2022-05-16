@@ -7,7 +7,6 @@ import 'package:freeze_app/widgets/textfield.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/logo.dart';
-import '../Bottomnavpage/List_of_pages/Innovation_page.dart';
 
 class PasswordSetup extends StatefulWidget {
   const PasswordSetup({Key? key}) : super(key: key);

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,13 +5,14 @@ import '../app_color.dart';
 import 'apptheme.dart';
 
 class Textfield1 extends StatelessWidget {
- final String titlle;
- final Icon icon;
-  const Textfield1({Key? key, required this.titlle, required this.icon}) : super(key: key);
+  final String titlle;
+  final Icon icon;
+  const Textfield1({Key? key, required this.titlle, required this.icon})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       height: 48.h,
       width: 303.w,
       decoration: BoxDecoration(
@@ -45,11 +45,9 @@ class Textfield1 extends StatelessWidget {
         ],
       ),
       child: TextFormField(
-        decoration: AppTheme.textFieldDecoration(
-            titlle, icon ),
-        style: const TextStyle(
-            color: AppColors.hintTextGrey, fontSize: 12),
-         //   onChanged: (val) => _password = val,
+        decoration: AppTheme.textFieldDecoration(titlle, icon),
+        style: const TextStyle(color: AppColors.hintTextGrey, fontSize: 12),
+        //   onChanged: (val) => _password = val,
       ),
     );
   }

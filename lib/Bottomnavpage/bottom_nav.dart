@@ -1,4 +1,3 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/Bottomnavpage/List_of_pages/Wallet.dart';
@@ -20,8 +19,10 @@ class BottomNav extends StatefulWidget {
 
 class _BottomNavState extends State<BottomNav> {
   int _currentIndex = 0;
+  // ignore: unused_field
   int _counter = 0;
 
+  // ignore: unused_element
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -42,67 +43,77 @@ class _BottomNavState extends State<BottomNav> {
     SalomonBottomBarItem(
       icon: Icon(Icons.home),
       title: Text("Homescreen"),
-        selectedColor: Colors.purple,
+      selectedColor: Colors.purple,
     ),
     SalomonBottomBarItem(
       icon: Icon(Icons.insert_drive_file),
       title: Text("Report"),
-       selectedColor: Colors.purple,
+      selectedColor: Colors.purple,
     ),
     SalomonBottomBarItem(
       icon: Icon(Icons.account_balance_wallet_outlined),
       title: Text("Wallet"),
-           selectedColor: Colors.purple,
+      selectedColor: Colors.purple,
     ),
     SalomonBottomBarItem(
       icon: Icon(Icons.person),
       title: Text("Profile"),
-        selectedColor: Colors.purple,
+      selectedColor: Colors.purple,
     ),
   ].toList();
 
   @override
+  // ignore: must_call_super
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     pagecontroll;
   }
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     Size _size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar:    AppBar(
-      backgroundColor: AppColors.scaffoldBG,
-      leading:    Image.asset('assets/images/Memoji Boys 5-17.png',width: 48.w,height: 55.h,),
-      title: Row(
-        children: [
-          Text('Hey',
-              style: GoogleFonts.montserrat(color: Colors.white,fontSize: 22.sp,fontWeight: FontWeight.normal)),
-          SizedBox(
-            width: 10,
-          ),
-          Text(
-            'Magesh',
-            style:GoogleFonts.montserrat(color: Colors.white,fontSize: 22.sp,fontWeight: FontWeight.bold),
-          )
+      appBar: AppBar(
+        backgroundColor: AppColors.scaffoldBG,
+        leading: Image.asset(
+          'assets/images/Memoji Boys 5-17.png',
+          width: 48.w,
+          height: 55.h,
+        ),
+        title: Row(
+          children: [
+            Text('Hey',
+                style: GoogleFonts.montserrat(
+                    color: Colors.white,
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.normal)),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              'Magesh',
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontSize: 22.sp,
+                  fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
+        actions: [
+          Image.asset('assets/images/Profile Circle.png'),
         ],
       ),
-
-      actions: [
-        Image.asset('assets/images/Profile Circle.png'),
-      ],
-    ),
       backgroundColor: AppColors.scaffoldBG,
       body: _pages[_currentIndex],
-
       bottomNavigationBar: SalomonBottomBar(
         unselectedItemColor: AppColors.iconColor,
-      currentIndex: _currentIndex,
-      onTap: (i) => setState(() => _currentIndex = i), items: _items,
-
+        currentIndex: _currentIndex,
+        onTap: (i) => setState(() => _currentIndex = i), items: _items,
 
         // backgroundColor: AppColors.scaffoldBG,
       ),
-      );
+    );
   }
 }

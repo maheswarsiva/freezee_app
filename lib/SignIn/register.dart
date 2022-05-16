@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:freeze_app/SignIn/password_setup.dart';
 import 'package:freeze_app/SignIn/signin.dart';
 import 'package:freeze_app/app_color.dart';
 import 'package:freeze_app/widgets/stackContainer.dart';
 import 'package:freeze_app/widgets/textfield.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 import '../widgets/logo.dart';
 
@@ -65,7 +63,6 @@ class _RegisterState extends State<Register> {
                           Icons.mail_outline,
                           color: AppColors.iconColor,
                         )),
-
                     Textfield1(
                         titlle: 'PROFESSIONAL DETAILS',
                         icon: Icon(
@@ -77,7 +74,8 @@ class _RegisterState extends State<Register> {
                         icon: Icon(
                           Icons.text_snippet_rounded,
                           color: AppColors.iconColor,
-                        )), Textfield1(
+                        )),
+                    Textfield1(
                         titlle: 'PAN CARD',
                         icon: Icon(
                           Icons.credit_card_rounded,
@@ -89,12 +87,13 @@ class _RegisterState extends State<Register> {
                           Icons.phone_android_rounded,
                           color: AppColors.iconColor,
                         )),
-                    SizedBox(height: 5.h,),
+                    SizedBox(
+                      height: 5.h,
+                    ),
                     InkWell(
                       child: Container(
                           height: 44.h,
                           width: 290.w,
-
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20.w),
                               boxShadow: [
@@ -103,14 +102,13 @@ class _RegisterState extends State<Register> {
                                     blurRadius: 7.w,
                                     offset: Offset(1, 1)),
                                 BoxShadow(
-                                    color:Color(0xff28003),
+                                    color: Color(0xff28003),
                                     blurRadius: 2.w,
                                     offset: Offset(-1, -1)),
                                 BoxShadow(
                                     color: Color(0xff28003E),
                                     blurRadius: 2.w,
                                     offset: Offset(3, -3)),
-
                                 BoxShadow(
                                     color: Color(0xff28003E),
                                     blurRadius: 2.w,
@@ -125,30 +123,23 @@ class _RegisterState extends State<Register> {
                                     blurRadius: 2.w,
                                     //  blurStyle: BlurStyle.inner,
                                     offset: Offset(3, 3)),
-
-
-
                               ],
-
-
-                              color: Color(0xff65019A)
-                          ),
-                          child:Center(
-                            child:   Text('Register',style: GoogleFonts.montserrat(color: Colors.white,fontSize: 14.sp),) ,
-                          )
-
-
-
-                      ),
-                      onTap: (){
-
-
-
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>Signin()));
+                              color: Color(0xff65019A)),
+                          child: Center(
+                            child: Text(
+                              'Register',
+                              style: GoogleFonts.montserrat(
+                                  color: Colors.white, fontSize: 14.sp),
+                            ),
+                          )),
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => Signin()));
                       },
-
                     ),
-                    SizedBox(height: 5.h,)
+                    SizedBox(
+                      height: 5.h,
+                    )
                   ],
                 ))
             // Container(
