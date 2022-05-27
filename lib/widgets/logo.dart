@@ -7,8 +7,8 @@ class logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100.w,
-      width: 100.w,
+      height: 95.h,
+      width: 109.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         boxShadow: [

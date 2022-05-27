@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../app_color.dart';
+
+import '../Theme/app_color.dart';
 import 'apptheme.dart';
 
 class Textfield1 extends StatelessWidget {
@@ -47,6 +48,7 @@ class Textfield1 extends StatelessWidget {
       child: TextFormField(
         decoration: AppTheme.textFieldDecoration(
             titlle, icon ),
+
         style: const TextStyle(
             color: AppColors.hintTextGrey, fontSize: 12),
          //   onChanged: (val) => _password = val,

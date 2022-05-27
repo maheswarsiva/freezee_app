@@ -11,7 +11,7 @@ class AppColors {
   static const Color textGrey = Color(0xFFF2F3F2);
   static const Color hintTextGrey = Color(0xFF939F9C);
   static const Color textFieldBorderColor = Color(0xFFEBF0FF);
-  static const Color iconColor = Color(0xFF0500FF);
+  static const Color iconColor = Color(0xFF939F9C);
   static const Color containerColor = Color(0xFFE7E7E7);
   static const Color colorPink = Color(0xFFEA80FC);
   static const Color colorLightPink = Color(0xFFF8CDFF);
