@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:freeze_app/widgets/appcache.dart';
 
 
 
@@ -8,12 +10,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'View/Bottomnavpage/List_of_pages/splashscreen.dart';
 
 
 
-void main() {
+void main()  async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  Appcache.sharecache = await SharedPreferences.getInstance();
+
   runApp(MyApp());
 }
 
@@ -23,6 +31,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    bool isLoggedIn =
+        Appcache.sharecache.getString('email') != null &&
+            (Appcache.sharecache.getString('status') != null &&
+                (Appcache.sharecache.getString('status') == 'true'));
+
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,

@@ -2,19 +2,39 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 import '../Theme/app_color.dart';
 import 'apptheme.dart';
 
 class Textfield1 extends StatelessWidget {
- final String titlle;
- final Icon icon;
-  const Textfield1({Key? key, required this.titlle, required this.icon}) : super(key: key);
+  final IconButton? suffixicon;
+  final String titlle;
+  final Icon icon;
+  final controllerthis;
+  final Function(String?) onChanged;
+  final String? Function(String?)? validator;
+
+  final bool obscureText;
+  final TextInputType? keyboardType;
+  final Widget? suffixIcon;
+  final TextInputAction? textInputAction;
+  const Textfield1({
+    Key? key,
+    required this.suffixicon,
+    required this.titlle,
+    required this.icon,
+    required this.onChanged,
+    required this.validator,
+    required this.obscureText,
+    required this.keyboardType,
+    required this.suffixIcon,
+    required this.textInputAction,
+    required this.controllerthis,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      height: 48.h,
+    return Container(
+      height: 45.h,
       width: 303.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.w),
@@ -46,12 +66,19 @@ class Textfield1 extends StatelessWidget {
         ],
       ),
       child: TextFormField(
-        decoration: AppTheme.textFieldDecoration(
-            titlle, icon ),
+        // autofocus: true,
 
-        style: const TextStyle(
-            color: AppColors.hintTextGrey, fontSize: 12),
-         //   onChanged: (val) => _password = val,
+        keyboardType: keyboardType,
+        validator: validator,
+        obscureText: obscureText,
+        controller: controllerthis,
+        decoration: AppTheme.textFieldDecoration(titlle, icon)
+            .copyWith(suffixIcon: suffixicon),
+        onChanged: onChanged,
+        textInputAction: textInputAction,
+
+        style: const TextStyle(color: AppColors.hintTextGrey, fontSize: 12),
+        //   onChanged: (val) => _password = val,
       ),
     );
   }
