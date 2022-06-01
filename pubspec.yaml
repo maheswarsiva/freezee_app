@@ -40,6 +40,7 @@ dependencies:
   flutter_svg: ^1.0.3
   table_calendar: ^3.0.5
   salomon_bottom_bar: ^3.3.1
+<<<<<<< HEAD
 
   percent_indicator: ^4.0.1
   responsive_framework: ^0.1.8
@@ -52,6 +53,9 @@ dependencies:
   cloud_firestore: ^3.1.17
   http: ^0.13.4
   shared_preferences: ^2.0.15
+=======
+  bottom_navy_bar: ^6.0.0
+>>>>>>> 2390a31a60fc4dd7fe83c4d64087ab02ad249910
 
 dev_dependencies:
   flutter_test:
@@ -83,7 +87,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+<<<<<<< HEAD
     - assets/
+=======
+>>>>>>> 2390a31a60fc4dd7fe83c4d64087ab02ad249910
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

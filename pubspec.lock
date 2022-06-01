@@ -29,6 +29,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  bottom_navy_bar:
+    dependency: "direct main"
+    description:
+      name: bottom_navy_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.0.0"
   characters:
     dependency: transitive
     description:
@@ -268,6 +275,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.0"
+<<<<<<< HEAD
   js:
     dependency: transitive
     description:
@@ -275,6 +283,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
+=======
+>>>>>>> 2390a31a60fc4dd7fe83c4d64087ab02ad249910
   matcher:
     dependency: transitive
     description:
@@ -408,6 +418,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+<<<<<<< HEAD
   responsive_framework:
     dependency: "direct main"
     description:
@@ -415,6 +426,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.8"
+=======
+>>>>>>> 2390a31a60fc4dd7fe83c4d64087ab02ad249910
   salomon_bottom_bar:
     dependency: "direct main"
     description:
@@ -422,6 +435,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.1"
+<<<<<<< HEAD
   shared_preferences:
     dependency: "direct main"
     description:
@@ -478,6 +492,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+=======
+>>>>>>> 2390a31a60fc4dd7fe83c4d64087ab02ad249910
   simple_gesture_detector:
     dependency: transitive
     description:

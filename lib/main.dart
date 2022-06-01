@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/widgets/appcache.dart';
 
+<<<<<<< HEAD
 
 
 import 'package:get/get.dart';
@@ -23,6 +24,14 @@ void main()  async{
   Appcache.sharecache = await SharedPreferences.getInstance();
 
   runApp(MyApp());
+=======
+import 'package:freeze_app/SignIn/signin.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
+void main() {
+  initializeDateFormatting().then((_) => runApp(MyApp()));
+>>>>>>> 2390a31a60fc4dd7fe83c4d64087ab02ad249910
 }
 
 class MyApp extends StatelessWidget {
@@ -31,15 +40,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     bool isLoggedIn =
         Appcache.sharecache.getString('email') != null &&
             (Appcache.sharecache.getString('status') != null &&
                 (Appcache.sharecache.getString('status') == 'true'));
 
+=======
+>>>>>>> 2390a31a60fc4dd7fe83c4d64087ab02ad249910
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
+<<<<<<< HEAD
       builder: (child) => GetMaterialApp(
         builder: (context, widget) => ResponsiveWrapper.builder(
             ClampingScrollWrapper.builder(context, widget!),
@@ -49,6 +62,9 @@ class MyApp extends StatelessWidget {
               ResponsiveBreakpoint.resize(800, name: DESKTOP),
               ResponsiveBreakpoint.autoScale(1600, name: 'xl')
             ]),
+=======
+      builder: (child) => MaterialApp(
+>>>>>>> 2390a31a60fc4dd7fe83c4d64087ab02ad249910
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -58,7 +74,11 @@ class MyApp extends StatelessWidget {
         ),
         home: child,
       ),
+<<<<<<< HEAD
       child: SplashScreen(),
+=======
+      child: Signin(),
+>>>>>>> 2390a31a60fc4dd7fe83c4d64087ab02ad249910
     );
   }
 }
