@@ -1,33 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:freeze_app/utils/validator.dart';
 
 import '../Model/Theme/app_color.dart';
 import 'apptheme.dart';
 
-class Textfield1 extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final String titlle;
   final Icon icon;
-  final controllerthis;
+  final TextEditingController controller;
   final Function(String?) onChanged;
-  final String? Function(String?)? validator;
 
   final bool obscureText;
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
   final TextInputAction? textInputAction;
-  const Textfield1({
-    Key? key,
-    required this.titlle,
-    required this.icon,
-    required this.onChanged,
-    required this.validator,
-    required this.obscureText,
-    required this.keyboardType,
-    required this.suffixIcon,
-    required this.textInputAction,
-    required this.controllerthis,
-  }) : super(key: key);
+  List<String>? validationRules = [];
+  final int? maximumWordCount;
+
+  CustomTextField(
+      {Key? key,
+      required this.titlle,
+      required this.icon,
+      required this.onChanged,
+      required this.obscureText,
+      required this.keyboardType,
+      required this.suffixIcon,
+      required this.textInputAction,
+      required this.controller,
+      this.maximumWordCount,
+      this.validationRules})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +71,23 @@ class Textfield1 extends StatelessWidget {
         // autofocus: true,
 
         keyboardType: keyboardType,
-        validator: validator,
+        validator: (String? value) {
+          if (validationRules != null && validationRules!.isNotEmpty) {
+            final ValidationState validationStatus =
+                Validator.validate(value ?? '', rules: validationRules ?? []);
+
+            if (!validationStatus.status) {
+              return validationStatus.error;
+            }
+          }
+        },
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(maximumWordCount),
+        ],
+
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         obscureText: obscureText,
-        controller: controllerthis,
+        controller: controller,
         decoration: AppTheme.textFieldDecoration(titlle, icon)
             .copyWith(suffixIcon: suffixIcon),
         onChanged: onChanged,

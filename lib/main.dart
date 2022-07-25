@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:freeze_app/Model/core/appcache.dart';
 import 'package:freeze_app/View/Bottomnavpage/bottom_nav.dart';
+import 'package:freeze_app/router.dart';
 import 'package:freeze_app/shared/sharedservice.dart';
-
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'View/Bottomnavpage/List_of_pages/splashscreen.dart';
@@ -15,19 +12,18 @@ import 'View/Bottomnavpage/List_of_pages/splashscreen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await SharedService().init();
-
-  runApp(MyApp());
+  await PreferenceHelper.getPreference("email")
+      .then((value) => runApp(MyApp(value != null)));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp(this.isLoggedIn, {Key? key}) : super(key: key);
+
+  bool isLoggedIn;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    bool isLoggedIn = SharedService().setUserName('email') != null;
-
     return ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,
@@ -48,7 +44,7 @@ class MyApp extends StatelessWidget {
                 primarySwatch: Colors.blue,
                 fontFamily: GoogleFonts.montserrat().fontFamily,
               ),
-              home: child,
+              getPages: AppRoutes.routes,
             ),
         child: isLoggedIn ? BottomNav() : SplashScreen());
   }

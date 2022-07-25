@@ -2,22 +2,21 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:freeze_app/Model/core/appurl.dart';
 import 'package:freeze_app/Model/userRank.dart';
-
+import 'package:freeze_app/http/httpurls.dart';
+//http
+import 'package:http/http.dart' as http;
 //route
 import 'package:page_transition/page_transition.dart';
+
 //Theme
 import '../../../../Model/Theme/app_color.dart';
 //widgets
 
 import '../../../../Model/rolesModel.dart';
 import '../../../../widgets/calender_custom.dart';
-import '../../../../widgets/poly_card.dart';
 import '../../../../widgets/home_rite.dart';
-
-//http
-import 'package:http/http.dart' as http;
+import '../../../../widgets/poly_card.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({Key? key}) : super(key: key);
@@ -54,7 +53,7 @@ class _HomescreenState extends State<Homescreen> {
     headers["Content-Type"] = "application/x-www-fprm-urlencpder";
 
     final res = await client.get(
-      Uri.parse(AppResponsiveUrl.usersdatanumbers),
+      Uri.parse(HttpUrls.usersdatanumbers),
       headers: headers,
     );
 
@@ -85,7 +84,7 @@ class _HomescreenState extends State<Homescreen> {
     headers["Content-Type"] = "application/x-www-fprm-urlencpder";
 
     final res = await client.get(
-      Uri.parse(AppResponsiveUrl.getDataList),
+      Uri.parse(HttpUrls.getDataList),
       headers: headers,
     );
 

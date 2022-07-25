@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
-
 import 'package:freeze_app/widgets/stackContainer.dart';
 import 'package:freeze_app/widgets/textfield.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,6 +17,10 @@ class PasswordSetup extends StatefulWidget {
 }
 
 class _PasswordSetupState extends State<PasswordSetup> {
+  TextEditingController passwordController = TextEditingController();
+
+  TextEditingController confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,33 +56,31 @@ class _PasswordSetupState extends State<PasswordSetup> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Textfield1(
+                  CustomTextField(
                     titlle: 'NEW PASSWORD',
                     icon: Icon(
                       Icons.vpn_key_outlined,
                       color: AppColors.iconColor,
                     ),
-                    controllerthis: null,
+                    controller: passwordController,
                     keyboardType: null,
                     obscureText: false,
                     onChanged: (String) {},
                     suffixIcon: null,
                     textInputAction: null,
-                    validator: (String) {},
                   ),
-                  Textfield1(
+                  CustomTextField(
                     titlle: 'NEW PASSWORD',
                     icon: Icon(
                       Icons.vpn_key_outlined,
                       color: AppColors.iconColor,
                     ),
-                    controllerthis: null,
+                    controller: confirmPasswordController,
                     keyboardType: null,
                     obscureText: false,
                     onChanged: (String) {},
                     suffixIcon: null,
                     textInputAction: null,
-                    validator: (String) {},
                   ),
                   InkWell(
                     child: Container(

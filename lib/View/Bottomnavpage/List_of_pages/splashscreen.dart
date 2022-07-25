@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:freeze_app/Model/core/appcache.dart';
-
 import 'package:page_transition/page_transition.dart';
 
 import '../../../Model/Theme/app_color.dart';
 import '../../../splashscrreen_details.dart';
-import '../../SignIn/login.dart';
+import '../../SignIn/login_screen/login_screen.dart';
 import '../bottom_nav.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -29,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
             context,
             PageTransition(
                 type: PageTransitionType.fade,
-                child: isLoding ? const BottomNav() : const Signin(),
+                child: isLoding ? const BottomNav() : const LoginScreen(),
                 duration: const Duration(milliseconds: 350))));
     WidgetsBinding.instance
         .addPostFrameCallback((_) => setState(() => visible = true));

@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
-import 'package:freeze_app/Model/core/appurl.dart';
-
+import 'package:freeze_app/http/httpurls.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 import '../../Model/cheaterboxModel.dart';
 import '../Bottomnavpage/bottom_nav.dart';
-
-import 'package:http/http.dart' as http;
 
 class ChearterBox extends StatefulWidget {
   const ChearterBox({Key? key}) : super(key: key);
@@ -26,7 +24,7 @@ class _ChearterBoxState extends State<ChearterBox> {
   List<CheaterBox> cheaterData = [];
 
   Future<CheaterBox?> fetchData() async {
-    var response = await http.get(Uri.parse(AppResponsiveUrl.cheaterBox));
+    var response = await http.get(Uri.parse(HttpUrls.cheaterBox));
     final jsonString = jsonDecode(response.body);
     print(jsonString);
     try {

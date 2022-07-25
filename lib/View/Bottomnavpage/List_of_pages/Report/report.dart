@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
 import 'package:freeze_app/Model/getReportModel.dart';
+import 'package:http/http.dart' as http;
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import '../../../../Model/core/appurl.dart';
-import 'package:http/http.dart' as http;
+import '../../../../http/httpurls.dart';
 
 class Report extends StatefulWidget {
   const Report({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _ReportState extends State<Report> {
     headers["Content-Type"] = "application/x-www-fprm-urlencpder";
 
     final res = await client.get(
-      Uri.parse(AppResponsiveUrl.getReport),
+      Uri.parse(HttpUrls.getReport),
       headers: headers,
     );
 

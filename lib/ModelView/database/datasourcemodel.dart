@@ -1,58 +1,54 @@
 import 'dart:convert';
-
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:freeze_app/Model/forgotpassword.dart';
 import 'package:freeze_app/Model/userLogin.dart';
-
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-import '../../Model/register_model.dart';
-
 import '../../Model/core/snackbar.dart';
-import '../../Model/core/appurl.dart';
-import 'dart:convert';
-
+import '../../Model/register_model.dart';
+import '../../http/httpurls.dart';
 import '../../shared/sharedservice.dart';
 
 class Authenticate_user {
-  Future<bool> signup(UserRegister user) async {
-    var client = http.Client();
-    try {
-      var response = await client.post(Uri.parse(AppResponsiveUrl.register),
-          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-          body: jsonEncode({
-            "name": user.name,
-            "email": user.email,
-            "password": user.password,
-            "aadhar": user.aadhar,
-            "phone": user.phone,
-            "pan": user.pan,
-          }));
-      if (response.statusCode == 200) {
-        showSnackBar(context: Get.context!, message: 'Registered Successfully');
-        return true;
-      } else if (response.statusCode == 400) {
-        showSnackBar(
-            context: Get.context!,
-            message: "Email Already Register",
-            bgColor: Colors.red);
-        return false;
-      } else {
-        print(response.statusCode);
-        showSnackBar(
-            context: Get.context!,
-            message: 'Registration Failed',
-            bgColor: Colors.red);
-        return false;
-      }
-    } catch (e) {
-      showSnackBar(
-          context: Get.context!, message: e.toString(), bgColor: Colors.red);
-      return false;
-    }
-  }
+  // Future<bool> signup(UserRegister user) async {
+  //   var client = http.Client();
+  //   try {
+  //     var response = await client.post(Uri.parse(HttpUrls.register),
+  //         headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+  //         body: jsonEncode({
+  //           "name": user.name,
+  //           "email": user.email,
+  //           "password": user.password,
+  //           "aadhar": user.aadhar,
+  //           "phone": user.phone,
+  //           "pan": user.pan,
+  //         }));
+  //     if (response.statusCode == 200) {
+  //       showSnackBar(context: Get.context!, message: 'Registered Successfully');
+  //       return true;
+  //     } else if (response.statusCode == 400) {
+  //       showSnackBar(
+  //           context: Get.context!,
+  //           message: "Email Already Register",
+  //           bgColor: Colors.red);
+  //       return false;
+  //     } else {
+  //       print(response.statusCode);
+  //       showSnackBar(
+  //           context: Get.context!,
+  //           message: 'Registration Failed',
+  //           bgColor: Colors.red);
+  //       return false;
+  //     }
+  //   } catch (e) {
+  //     showSnackBar(
+  //         context: Get.context!, message: e.toString(), bgColor: Colors.red);
+  //     return false;
+  //   }
+  // }
 
   Future<UserLogin?> login(String? email, String? password) async {
     String url = 'https://freez-api.herokuapp.com/auth/login';
@@ -73,8 +69,9 @@ class Authenticate_user {
     var jsonString = jsonDecode(res.body);
     print(jsonString);
     if (res.statusCode == 200) {
-      SharedService().setUserName(email);
-      SharedService().setUserName(password);
+      PreferenceHelper.setPreference("email", email);
+
+      PreferenceHelper.setPreference("password", password);
       UserLogin userData = UserLogin.fromJson(jsonString);
       return userData;
     }
@@ -85,7 +82,7 @@ class Authenticate_user {
     var client = http.Client();
     try {
       var response = await client.post(
-        Uri.parse(AppResponsiveUrl.otp),
+        Uri.parse(HttpUrls.otp),
         body: jsonEncode({"id": id, "otp": otp}),
         headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       );
@@ -112,7 +109,7 @@ class Authenticate_user {
     var client = http.Client();
     try {
       var response = await client.post(
-        Uri.parse(AppResponsiveUrl.getotp),
+        Uri.parse(HttpUrls.getotp),
         body: jsonEncode({"email": email}),
         headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       );
@@ -144,7 +141,7 @@ class Authenticate_user {
     UserRegister? userResponse;
     try {
       var response = await client.post(
-        Uri.parse(AppResponsiveUrl.getotp),
+        Uri.parse(HttpUrls.getotp),
         body: jsonEncode({"email": email}),
         headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       );
@@ -175,7 +172,7 @@ class Authenticate_user {
 
     try {
       var response = await client.post(
-        Uri.parse(AppResponsiveUrl.userupdate),
+        Uri.parse(HttpUrls.userupdate),
         body: jsonEncode({"email": email, "password": password}),
         headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       );
@@ -202,14 +199,13 @@ class Authenticate_user {
   }
 }
 
-  // Future<UserLogin?> authorization(String? email, String? password) async {
-  //   String url = 'https://freez-api.herokuapp.com/auth/login';
-  //   var request = http.MultipartRequest('POST', Uri.parse('url'));
-  //   request.fields.addAll({
-  //     'sId': 'info',
-  //     'token': 'info',
-  //     'username': email!, //notice you have to use .text
-  //     'password': password!, //notice you have to use .text
-  //   });
-  // }
-
+// Future<UserLogin?> authorization(String? email, String? password) async {
+//   String url = 'https://freez-api.herokuapp.com/auth/login';
+//   var request = http.MultipartRequest('POST', Uri.parse('url'));
+//   request.fields.addAll({
+//     'sId': 'info',
+//     'token': 'info',
+//     'username': email!, //notice you have to use .text
+//     'password': password!, //notice you have to use .text
+//   });
+// }

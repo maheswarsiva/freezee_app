@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../Model/Theme/app_color.dart';
 import '../../../widgets/textfield.dart';
 
 class ResetPasswordWidget extends StatefulWidget {
@@ -50,7 +49,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                 width: 343.w,
                 child: Stack(
                   children: [
-                    Textfield1(
+                    CustomTextField(
                         titlle: 'Password',
                         icon: Icon(
                           Icons.vpn_key_outlined,
@@ -60,11 +59,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                           // _password = value!;
                           // print(_password);
                         },
-                        validator: (Value) {
-                          if (Value!.isEmpty) {
-                            'please enter some value';
-                          }
-                        },
+                        validationRules: ['required'],
                         obscureText: !showPassword,
                         keyboardType: TextInputType.name,
                         suffixIcon: IconButton(
@@ -77,7 +72,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                               color: showPassword ? Colors.white : Colors.grey),
                         ),
                         textInputAction: TextInputAction.next,
-                        controllerthis: passwordController),
+                        controller: passwordController),
                     // TextFormField(
                     //   controller: passwordController,
                     //   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -134,7 +129,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                 width: 343.w,
                 child: Stack(
                   children: [
-                    Textfield1(
+                    CustomTextField(
                         titlle: 'Password',
                         icon: Icon(
                           Icons.vpn_key_outlined,
@@ -144,13 +139,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                           // _password = value!;
                           // print(_password);
                         },
-                        validator: (s) {
-                          s!.isEmpty
-                              ? 'Confirm Password Required'
-                              : s == passwordController.text
-                                  ? null
-                                  : 'Password does not match';
-                        },
+                        validationRules: ['required'],
                         obscureText: !showPassword,
                         keyboardType: TextInputType.name,
                         suffixIcon: IconButton(
@@ -163,7 +152,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                               color: showPassword ? Colors.white : Colors.grey),
                         ),
                         textInputAction: TextInputAction.next,
-                        controllerthis: confPasswordController),
+                        controller: confPasswordController),
                     Padding(
                       padding: EdgeInsets.only(top: 12.0.h, left: 11.w),
                       child: Image.asset(

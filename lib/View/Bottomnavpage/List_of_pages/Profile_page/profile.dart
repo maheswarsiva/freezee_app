@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
+import 'package:freeze_app/View/Bottomnavpage/List_of_pages/Profile_page/advertise.dart';
 import 'package:freeze_app/View/Bottomnavpage/List_of_pages/Profile_page/bank_details.dart';
 import 'package:freeze_app/View/Bottomnavpage/List_of_pages/Profile_page/transaction_details.dart';
 
-import 'package:freeze_app/View/Bottomnavpage/List_of_pages/Profile_page/advertise.dart';
-
-import 'personal_details.dart';
 import '../../../SignIn/cheaterbox.dart';
-import '../../../SignIn/login.dart';
+import '../../../SignIn/login_screen/login_screen.dart';
+import 'personal_details.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -183,7 +182,7 @@ class _ProfileState extends State<Profile> {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => Signin()));
+                  context, MaterialPageRoute(builder: (_) => LoginScreen()));
             },
           ),
           SizedBox(
