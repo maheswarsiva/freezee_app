@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import '../../Model/Theme/app_color.dart';
-import 'List_of_pages/Home_Pages/Innovation_page.dart';
-import 'List_of_pages/Wallet_page/Wallet.dart';
-import 'List_of_pages/Profile_page/profile.dart';
-import 'List_of_pages/Report/report.dart';
+import '../../../Model/Theme/app_color.dart';
+import '../../Bottomnavpage/List_of_pages/Home_Pages/Innovation_page.dart';
+import '../../Bottomnavpage/List_of_pages/Profile_page/profile.dart';
+import '../../Bottomnavpage/List_of_pages/Report/report.dart';
+import '../../Bottomnavpage/List_of_pages/Wallet_page/Wallet.dart';
 
-class BottomNav extends StatefulWidget {
-  const BottomNav({Key? key}) : super(key: key);
+class HomeTabScreen extends StatefulWidget {
+  const HomeTabScreen({Key? key}) : super(key: key);
 
   @override
-  State<BottomNav> createState() => _BottomNavState();
+  State<HomeTabScreen> createState() => _HomeTabScreenState();
 }
 
-class _BottomNavState extends State<BottomNav> {
+class _HomeTabScreenState extends State<HomeTabScreen> {
   int currentIndex = 0;
   int counter = 0;
 

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 
 import 'Model/Theme/app_color.dart';
 import 'View/Bottomnavpage/List_of_pages/Profile_page/transaction_details.dart';
-import 'View/Bottomnavpage/bottom_nav.dart';
+import 'View/SignIn/home_screen/bottom_nav.dart';
 
 class Qusetion_details extends StatefulWidget {
   const Qusetion_details({Key? key}) : super(key: key);
@@ -281,7 +280,7 @@ class _Qusetion_detailsState extends State<Qusetion_details> {
                       ),
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => BottomNav()));
+                            MaterialPageRoute(builder: (_) => HomeTabScreen()));
                       },
                     ),
                     SizedBox(

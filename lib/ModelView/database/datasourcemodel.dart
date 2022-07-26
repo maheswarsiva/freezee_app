@@ -3,14 +3,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:freeze_app/Model/forgotpassword.dart';
-import 'package:freeze_app/Model/userLogin.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../../Model/core/snackbar.dart';
 import '../../Model/register_model.dart';
 import '../../http/httpurls.dart';
-import '../../shared/sharedservice.dart';
 
 class Authenticate_user {
   // Future<bool> signup(UserRegister user) async {
@@ -50,33 +48,33 @@ class Authenticate_user {
   //   }
   // }
 
-  Future<UserLogin?> login(String? email, String? password) async {
-    String url = 'https://freez-api.herokuapp.com/auth/login';
-    // final _base = "https://home-hub-app.herokuapp.com";
-
-    Map<String, String> headers = {};
-    headers['Accept'] = "application/json";
-    headers["Content-Type"] = "application/json";
-
-    Map<String, dynamic> values = Map();
-    values['email'] = email!;
-    values['password'] = password!;
-
-    var res = await http.post(Uri.parse(url),
-        body: json.encode({"email": '$email', "password": '$password'}),
-        headers: headers);
-
-    var jsonString = jsonDecode(res.body);
-    print(jsonString);
-    if (res.statusCode == 200) {
-      PreferenceHelper.setPreference("email", email);
-
-      PreferenceHelper.setPreference("password", password);
-      UserLogin userData = UserLogin.fromJson(jsonString);
-      return userData;
-    }
-    return null;
-  }
+  // Future<UserLogin?> login(String? email, String? password) async {
+  //   String url = 'https://freez-api.herokuapp.com/auth/login';
+  //   // final _base = "https://home-hub-app.herokuapp.com";
+  //
+  //   Map<String, String> headers = {};
+  //   headers['Accept'] = "application/json";
+  //   headers["Content-Type"] = "application/json";
+  //
+  //   Map<String, dynamic> values = Map();
+  //   values['email'] = email!;
+  //   values['password'] = password!;
+  //
+  //   var res = await http.post(Uri.parse(url),
+  //       body: json.encode({"email": '$email', "password": '$password'}),
+  //       headers: headers);
+  //
+  //   var jsonString = jsonDecode(res.body);
+  //   print(jsonString);
+  //   if (res.statusCode == 200) {
+  //     PreferenceHelper.setPreference("email", email);
+  //
+  //     PreferenceHelper.setPreference("password", password);
+  //     UserLogin userData = UserLogin.fromJson(jsonString);
+  //     return userData;
+  //   }
+  //   return null;
+  // }
 
   Future<bool?> verifyOtp(String id, String otp) async {
     var client = http.Client();

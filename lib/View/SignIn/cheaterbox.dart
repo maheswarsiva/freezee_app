@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 import '../../Model/cheaterboxModel.dart';
-import '../Bottomnavpage/bottom_nav.dart';
+import 'home_screen/bottom_nav.dart';
 
 class ChearterBox extends StatefulWidget {
   const ChearterBox({Key? key}) : super(key: key);
@@ -128,8 +128,8 @@ class _ChearterBoxState extends State<ChearterBox> {
                       ],
                     )),
                 onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => BottomNav()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => HomeTabScreen()));
                 },
               ),
             ],

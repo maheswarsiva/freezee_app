@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../bottom_nav.dart';
+import '../../../SignIn/home_screen/bottom_nav.dart';
 
 class Advertise extends StatefulWidget {
   const Advertise({Key? key}) : super(key: key);
@@ -86,8 +85,8 @@ class _AdvertiseState extends State<Advertise> {
           Center(
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => BottomNav()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => HomeTabScreen()));
               },
               child: Container(
                 height: 35,

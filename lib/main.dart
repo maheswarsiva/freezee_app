@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:freeze_app/View/Bottomnavpage/bottom_nav.dart';
+import 'package:freeze_app/View/SignIn/home_screen/bottom_nav.dart';
 import 'package:freeze_app/router.dart';
 import 'package:freeze_app/shared/sharedservice.dart';
 import 'package:get/get.dart';
@@ -46,6 +46,6 @@ class MyApp extends StatelessWidget {
               ),
               getPages: AppRoutes.routes,
             ),
-        child: isLoggedIn ? BottomNav() : SplashScreen());
+        child: isLoggedIn ? HomeTabScreen() : SplashScreen());
   }
 }

@@ -19,8 +19,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool showPassword = false;
-  final TextEditingController email = TextEditingController();
-  final TextEditingController password = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
 
   // String? _email, _password;
@@ -102,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           validationRules: ['required', 'email'],
                           obscureText: false,
-                          controller: email,
+                          controller: logic.emailTextController,
                           keyboardType: TextInputType.emailAddress,
                           suffixIcon: null,
                           textInputAction: TextInputAction.next,
@@ -133,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             textInputAction: TextInputAction.next,
-                            controller: password),
+                            controller: logic.passwordController),
                         SizedBox(
                           height: 20.h,
                         ),
@@ -141,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           splashColor: Colors.white,
                           onTap: () async {
                             if (updateandsave()) {
-                              print(updateandsave());
+                              logic.login();
                             }
                           },
                           child: Container(

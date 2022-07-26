@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Bottomnavpage/bottom_nav.dart';
+import 'home_screen/bottom_nav.dart';
 
 class Page7 extends StatefulWidget {
   const Page7({Key? key}) : super(key: key);
@@ -47,7 +46,7 @@ class _Page7State extends State<Page7> {
         actions: [
           IconButton(
               onPressed: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => BottomNav())),
+                  context, MaterialPageRoute(builder: (_) => HomeTabScreen())),
               icon: Icon(Icons.add))
         ],
       ),

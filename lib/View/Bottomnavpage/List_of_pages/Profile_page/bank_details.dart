@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../bottom_nav.dart';
+import '../../../SignIn/home_screen/bottom_nav.dart';
 
 class Bankdetails extends StatefulWidget {
   const Bankdetails({Key? key}) : super(key: key);
@@ -334,7 +333,7 @@ class _BankdetailsState extends State<Bankdetails> {
                         )),
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => BottomNav()));
+                          MaterialPageRoute(builder: (_) => HomeTabScreen()));
                     },
                   ),
                   SizedBox(
