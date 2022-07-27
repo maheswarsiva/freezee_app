@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
 import 'package:freeze_app/View/SignIn/login_screen/login_controller.dart';
-import 'package:freeze_app/View/SignIn/password_setup.dart';
 import 'package:freeze_app/widgets/logo.dart';
 import 'package:freeze_app/widgets/textfield.dart';
 import 'package:get/get.dart';
@@ -248,10 +247,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         TextButton(
                           onPressed: () {
-                            //forgot password screen
-                            Get.to(() => PasswordSetup());
-                            // Navigator.push(context,
-                            //     MaterialPageRoute(builder: (_) => PasswordSetup()));
+                            Get.toNamed("/email_verification_page");
                           },
                           child: Text(
                             'Forgot Password?',

@@ -24,30 +24,30 @@ class _OTPWidgetState extends State<OTPWidget> {
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+      filter: ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
       child: Center(
           child: Card(
         child: Container(
-          height: 194.h,
-          width: 343.92.w,
+          // height: 194.h,
+          // width: 343.92.w,
           decoration: BoxDecoration(
-            color: Colors.white,
             borderRadius: BorderRadius.circular(10.r),
           ),
           child: Stack(
             children: [
               Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(
-                    height: 34.6,
-                  ),
-                  const Text(
-                    'OTP Verification',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
-                  ),
-                  const SizedBox(
-                    height: 17.83,
-                  ),
+                  // const SizedBox(
+                  //   height: 34.6,
+                  // ),
+                  // const Text(
+                  //   'OTP Verification',
+                  //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                  // ),
+                  // const SizedBox(
+                  //   height: 37.83,
+                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -99,13 +99,13 @@ class _OTPWidgetState extends State<OTPWidget> {
                   ),
                 ],
               ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 20.0, top: 23),
-                  child: _closeBox(),
-                ),
-              )
+              // Align(
+              //   alignment: Alignment.topRight,
+              //   child: Padding(
+              //     padding: const EdgeInsets.only(right: 20.0, top: 0),
+              //     child: _closeBox(),
+              //   ),
+              // )
             ],
           ),
         ),

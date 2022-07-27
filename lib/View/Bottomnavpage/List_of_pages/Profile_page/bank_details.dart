@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
+import 'package:freeze_app/utils/apputils.dart';
+import 'package:freeze_app/utils/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../../SignIn/home_screen/bottom_nav.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class Bankdetails extends StatefulWidget {
   const Bankdetails({Key? key}) : super(key: key);
@@ -13,6 +15,54 @@ class Bankdetails extends StatefulWidget {
 }
 
 class _BankdetailsState extends State<Bankdetails> {
+  late Razorpay _razorpay;
+
+  @override
+  void initState() {
+    super.initState();
+    _razorpay = Razorpay();
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    AppUtils.showToast("Payment Success");
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    Fluttertoast.showToast(
+        msg: "ERROR: " + response.code.toString() + " - " + response.message!,
+        toastLength: Toast.LENGTH_SHORT);
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    Fluttertoast.showToast(
+        msg: "EXTERNAL_WALLET: " + response.walletName!,
+        toastLength: Toast.LENGTH_SHORT);
+  }
+
+  void openCheckout() async {
+    var options = {
+      'key': Constants.razorPayKey,
+      'amount': 100,
+      'name': 'Freezee',
+      //'description': 'Fine T-Shirt',
+      //'prefill': {'contact': '9961410407', 'email': 'md@markhealth.com'},
+      'timeout': 300,
+      //"order_id": "1"
+      // 'external': {
+      //   'wallets': ['paytm']
+      // }
+    };
+
+    try {
+      _razorpay.open(options);
+    } catch (e) {
+      debugPrint('Error: e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -332,8 +382,9 @@ class _BankdetailsState extends State<Bankdetails> {
                           ),
                         )),
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => HomeTabScreen()));
+                      openCheckout();
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (_) => HomeTabScreen()));
                     },
                   ),
                   SizedBox(

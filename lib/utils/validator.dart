@@ -79,6 +79,19 @@ class Validator {
           return ValidationState(error: 'Invalid Aadhar');
         }
       }
+
+      if (rule == 'password') {
+        final RegExp aadharregExp = RegExp(
+            r'(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$)');
+        if (input == '') {
+          return ValidationState(
+              error:
+                  'Password should be Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character');
+        }
+        if (!aadharregExp.hasMatch(input)) {
+          return ValidationState(error: 'Incorrect format');
+        }
+      }
     }
 
     return ValidationState(status: true);

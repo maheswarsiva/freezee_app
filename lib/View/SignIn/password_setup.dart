@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../widgets/logo.dart';
-import '../../widgets/passcode.dart';
+import 'reset_password_screen/passcode.dart';
 
 class PasswordSetup extends StatefulWidget {
   const PasswordSetup({Key? key}) : super(key: key);

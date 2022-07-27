@@ -89,7 +89,7 @@ class CustomTextField extends StatelessWidget {
         obscureText: obscureText,
         controller: controller,
         decoration: AppTheme.textFieldDecoration(titlle, icon)
-            .copyWith(suffixIcon: suffixIcon),
+            .copyWith(suffixIcon: suffixIcon, errorMaxLines: 5),
         onChanged: onChanged,
         textInputAction: textInputAction,
 

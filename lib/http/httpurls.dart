@@ -1,17 +1,17 @@
 class HttpUrls {
   static const String baseurl = "https://freez-api.herokuapp.com";
-  static const String getpersonaldetails = "$baseurl/get/personal_details";
-  static const String getProffessional = "$baseurl/get/prof_details";
-  static const String getDataList = '$baseurl/get/all_target';
-  static const String getReport = '$baseurl/get/getreport';
-  static const String authVerify = '$baseurl/auth/verify';
-  static const String userupdate = '$baseurl/auth/chngpwd';
-  static const String cheaterBox = '$baseurl/cheaterBox/get_box';
+  static const String getpersonaldetails = "/get/personal_details";
+  static const String getProffessional = "/get/prof_details";
+  static const String getDataList = '/get/all_target';
+  static const String getReport = '/get/getreport';
+  static const String authVerify = '/auth/verify';
+  static const String userupdate = '/auth/chngpwd';
+  static const String cheaterBox = '/cheaterBox/get_box';
 
-  static const String register = "$baseurl/auth/register";
-  static const String login = "$baseurl/auth/login";
-  static const String otp = "$baseurl/auth/getotp";
-  static const String changepass = "$baseurl/auth/chngpwd";
-  static const String usersdatanumbers = "$baseurl/get/role";
-  static const String getotp = "$baseurl/auth/getotp";
+  static const String register = "/auth/register";
+  static const String login = "/auth/login";
+  static const String otp = "/auth/getotp";
+  static const String changepass = "/auth/chngpwd";
+  static const String usersdatanumbers = "/get/role";
+  static const String getotp = "/auth/getotp";
 }
