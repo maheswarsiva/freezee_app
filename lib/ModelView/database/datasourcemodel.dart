@@ -8,11 +8,11 @@ import 'package:freeze_app/Model/userLogin.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../Model/cheaterboxModel.dart';
 import '../../Model/register_model.dart';
 
 import '../../Model/core/snackbar.dart';
 import '../../Model/core/appurl.dart';
-import 'dart:convert';
 
 import '../../shared/sharedservice.dart';
 
@@ -200,16 +200,17 @@ class Authenticate_user {
       return "userResponse";
     }
   }
+
+  Future<CheaterBox?> fetchCheaterData() async {
+    Map<String, String> headers = {};
+    headers['Accept'] = "application/json";
+    headers["Content-Type"] = "application/json";
+
+    var response = await http.get(Uri.parse(AppResponsiveUrl.cheaterBox),
+        headers: headers);
+    Map<String, dynamic> map = jsonDecode(response.body);
+    List<dynamic> data = map["cheaterBoxData"];
+
+    return CheaterBox.fromJson(data);
+  }
 }
-
-  // Future<UserLogin?> authorization(String? email, String? password) async {
-  //   String url = 'https://freez-api.herokuapp.com/auth/login';
-  //   var request = http.MultipartRequest('POST', Uri.parse('url'));
-  //   request.fields.addAll({
-  //     'sId': 'info',
-  //     'token': 'info',
-  //     'username': email!, //notice you have to use .text
-  //     'password': password!, //notice you have to use .text
-  //   });
-  // }
-

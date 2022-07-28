@@ -19,17 +19,7 @@ class _Qusetion_detailsState extends State<Qusetion_details> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.scaffoldBG,
-      // appBar: AppBar(
-      //   backgroundColor: AppColors.scaffoldBG,
-      //   automaticallyImplyLeading: false,
-      //   title: Center(
-      //     child: Text('Q&A For Add',
-      //         style: GoogleFonts.montserrat(
-      //             color: Colors.white,
-      //             fontSize: 22.sp,
-      //             fontWeight: FontWeight.normal)),
-      //   ),
-      // ),
+
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(

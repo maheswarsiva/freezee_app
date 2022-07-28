@@ -4,17 +4,16 @@ class CheaterBox {
   });
   List<CheaterBoxData>? cheaterBoxData;
 
-  CheaterBox.fromJson(Map<String, dynamic> json) {
-    cheaterBoxData = List.from(json['cheaterBoxData'])
-        .map((e) => CheaterBoxData.fromJson(e))
-        .toList();
+  factory CheaterBox.fromJson(List<dynamic> data) {
+    return CheaterBox(
+        cheaterBoxData: data.map((e) => CheaterBoxData.fromJson(e)).toList());
   }
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['cheaterBoxData'] = cheaterBoxData!.map((e) => e.toJson()).toList();
-    return _data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   final _data = <String, dynamic>{};
+  //   _data['cheaterBoxData'] = cheaterBoxData!.map((e) => e.toJson()).toList();
+  //   return _data;
+  // }
 }
 
 class CheaterBoxData {
@@ -32,18 +31,18 @@ class CheaterBoxData {
     required this.V,
     required this.shares,
   });
-  late final Img img;
-  late final UserImg userImg;
-  late final String id;
-  late final String description;
-  late final String email;
-  late final String userId;
-  late final String name;
-  late final List<Likes> likes;
-  late final List<Comments> comments;
-  late final String cheaterBoxID;
-  late final int V;
-  late final List<Shares> shares;
+  Img? img;
+  UserImg? userImg;
+  int? id;
+  String? description;
+  String? email;
+  String? userId;
+  String? name;
+  List<Likes>? likes;
+  List<Comments>? comments;
+  String? cheaterBoxID;
+  int? V;
+  List<Shares>? shares;
 
   CheaterBoxData.fromJson(Map<String, dynamic> json) {
     img = Img.fromJson(json['img']);
@@ -63,18 +62,18 @@ class CheaterBoxData {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['img'] = img.toJson();
-    _data['user_img'] = userImg.toJson();
+    _data['img'] = img!.toJson();
+    _data['user_img'] = userImg!.toJson();
     _data['_id'] = id;
     _data['description'] = description;
     _data['email'] = email;
     _data['userId'] = userId;
     _data['name'] = name;
-    _data['likes'] = likes.map((e) => e.toJson()).toList();
-    _data['comments'] = comments.map((e) => e.toJson()).toList();
+    _data['likes'] = likes!.map((e) => e.toJson()).toList();
+    _data['comments'] = comments!.map((e) => e.toJson()).toList();
     _data['cheaterBoxID'] = cheaterBoxID;
     _data['__v'] = V;
-    _data['shares'] = shares.map((e) => e.toJson()).toList();
+    _data['shares'] = shares!.map((e) => e.toJson()).toList();
     return _data;
   }
 }
@@ -84,8 +83,8 @@ class Img {
     required this.data,
     required this.contentType,
   });
-  late final Data data;
-  late final String contentType;
+  Data? data;
+  String? contentType;
 
   Img.fromJson(Map<String, dynamic> json) {
     data = Data.fromJson(json['data']);
@@ -94,7 +93,7 @@ class Img {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['data'] = data.toJson();
+    _data['data'] = data!.toJson();
     _data['contentType'] = contentType;
     return _data;
   }
@@ -105,8 +104,8 @@ class Data {
     required this.type,
     required this.data,
   });
-  late final String type;
-  late final List<int> data;
+  String? type;
+  List<int>? data;
 
   Data.fromJson(Map<String, dynamic> json) {
     type = json['type'];
@@ -126,8 +125,8 @@ class UserImg {
     required this.data,
     required this.contentType,
   });
-  late final Data data;
-  late final String contentType;
+  Data? data;
+  String? contentType;
 
   UserImg.fromJson(Map<String, dynamic> json) {
     data = Data.fromJson(json['data']);
@@ -136,7 +135,7 @@ class UserImg {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['data'] = data.toJson();
+    _data['data'] = data!.toJson();
     _data['contentType'] = contentType;
     return _data;
   }
@@ -175,11 +174,11 @@ class Comments {
     required this.comments,
     required this.commenterImg,
   });
-  late final String email;
-  late final String name;
-  late final int userId;
-  late final String comments;
-  late final CommenterImg commenterImg;
+  String? email;
+  String? name;
+  int? userId;
+  String? comments;
+  CommenterImg? commenterImg;
 
   Comments.fromJson(Map<String, dynamic> json) {
     email = json['email'];
@@ -195,7 +194,7 @@ class Comments {
     _data['name'] = name;
     _data['userId'] = userId;
     _data['comments'] = comments;
-    _data['commenter_img'] = commenterImg.toJson();
+    _data['commenter_img'] = commenterImg!.toJson();
     return _data;
   }
 }
@@ -205,8 +204,8 @@ class CommenterImg {
     required this.data,
     required this.contentType,
   });
-  late final String data;
-  late final String contentType;
+  String? data;
+  String? contentType;
 
   CommenterImg.fromJson(Map<String, dynamic> json) {
     data = json['data'];
