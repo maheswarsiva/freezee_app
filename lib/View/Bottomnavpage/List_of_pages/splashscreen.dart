@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
             context,
             PageTransition(
                 type: PageTransitionType.fade,
-                child: isLoding ? const HomeTabScreen() : const LoginScreen(),
+                child: isLoding ? const HomeTabScreen() : LoginScreen(),
                 duration: const Duration(milliseconds: 350))));
     WidgetsBinding.instance
         .addPostFrameCallback((_) => setState(() => visible = true));

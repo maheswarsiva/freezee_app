@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
-import 'package:freeze_app/View/SignIn/reset_password_screen/passcode.dart';
 import 'package:freeze_app/View/SignIn/reset_password_screen/reset_password_controller.dart';
 import 'package:freeze_app/utils/apputils.dart';
 import 'package:freeze_app/widgets/logo.dart';
@@ -168,15 +167,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                     color: Colors.red);
                               }
 
-                              if (isValidated) {
-                                Get.defaultDialog(
-                                    content: OTPWidget(),
-                                    title: 'OTP Verification',
-                                    titleStyle: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w400),
-                                    barrierDismissible: false);
-                              }
+                              // if (isValidated) {
+                              //   Get.defaultDialog(
+                              //       content: OTPWidget(),
+                              //       title: 'OTP Verification',
+                              //       titleStyle: TextStyle(
+                              //           fontSize: 18,
+                              //           fontWeight: FontWeight.w400),
+                              //       barrierDismissible: false);
+                              // }
                             },
                           ),
                           SizedBox(

@@ -18,7 +18,8 @@ class DioHelper {
     // dio.options.receiveDataWhenStatusError = true;
     dio.options.headers[HttpHeaders.acceptHeader] = 'application/json';
     dio.options.validateStatus = (int? status) {
-      return status! < 400;
+      return true;
+      // return status! < 400;
     };
     dio.transformer = JsonTransformer();
     //setup auth interceptor

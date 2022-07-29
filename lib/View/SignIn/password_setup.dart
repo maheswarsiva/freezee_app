@@ -128,7 +128,7 @@ class _PasswordSetupState extends State<PasswordSetup> {
                       Navigator.push(
                           context,
                           PageTransition(
-                              child: OTPWidget(),
+                              child: OTPWidget((value) {}),
                               type: PageTransitionType.leftToRight,
                               duration: const Duration(milliseconds: 100)));
                     },

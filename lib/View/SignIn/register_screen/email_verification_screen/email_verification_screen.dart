@@ -30,141 +30,160 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     return GetBuilder<EmailVerificationController>(
       assignId: true,
       builder: (logic) {
-        return Scaffold(
-          backgroundColor: AppColors.scaffoldBG,
-          body: SafeArea(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    height: 33.h,
-                  ),
-                  logo(),
-                  Text(
-                    "Welcome to the RITE Foundation",
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      color: Color(0xFF65019A),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "Enter the Email Address",
-                    style: TextStyle(fontSize: 12.sp, color: Color(0xFF939F9C)),
-                  ),
-                  SizedBox(
-                    height: 180.h,
-                  ),
-                  StackContainer(
-                    height: 240.h,
-                    child: Form(
-                      key: logic.formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          CustomTextField(
-                            titlle: 'Enter Your Email Id',
-                            icon: Icon(
-                              Icons.vpn_key_outlined,
-                              color: AppColors.iconColor,
-                            ),
-                            controller: logic.emailController,
-                            keyboardType: null,
-                            obscureText: false,
-                            onChanged: (String) {},
-                            validationRules: ['required', 'email'],
-                            suffixIcon: null,
-                            textInputAction: null,
-                          ),
-                          InkWell(
-                            child: Container(
-                                height: 44.h,
-                                width: 290.w,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20.w),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Color(0xffA202F6),
-                                          blurRadius: 3.w,
-                                          offset: Offset(1, 1)),
-                                      BoxShadow(
-                                          color: Color(0xff28003),
-                                          blurRadius: 1.w,
-                                          offset: Offset(-1, -1)),
-                                      BoxShadow(
-                                          color: Color(0xff28003E),
-                                          blurRadius: 1.w,
-                                          offset: Offset(2, -2)),
-                                      BoxShadow(
-                                          color: Color(0xff28003E),
-                                          blurRadius: 1.w,
-                                          offset: Offset(-2, 2)),
-                                      BoxShadow(
-                                          color: Color(0xffA202F6),
-                                          blurRadius: 1.w,
-                                          //blurStyle: BlurStyle.inner,
-                                          offset: Offset(-3, -3)),
-                                      BoxShadow(
-                                          color: Color(0xff28003E),
-                                          blurRadius: 1.w,
-                                          blurStyle: BlurStyle.inner,
-                                          offset: Offset(2, 2)),
-                                    ],
-                                    color: Color(0xff65019A)),
-                                child: Center(
-                                  child: Text(
-                                    'Send OTP',
-                                    style: GoogleFonts.montserrat(
-                                        color: Colors.white, fontSize: 14.sp),
-                                  ),
-                                )),
-                            onTap: () async {
-                              bool isValidated =
-                                  logic.formKey.currentState!.validate();
-                              if (isValidated) {
-                                Get.toNamed('/reset_password_screen');
-                                // bool isOtpSend =
-                                //     await logic.emailVerification();
-                                // if (isOtpSend) {
-                                //   Get.toNamed('/reset_password_screen');
-
-                                // Get.defaultDialog(
-                                //     content: RegisterPinWidget(),
-                                //     title: 'OTP Verification',
-                                //     titleStyle: TextStyle(
-                                //         fontSize: 18,
-                                //         fontWeight: FontWeight.w400),
-                                //     barrierDismissible: false);
-
-                                //
-                                // Get.defaultDialog(
-                                //     content: OTPWidget(),
-                                //     title: 'OTP Verification',
-                                //     titleStyle: TextStyle(
-                                //         fontSize: 18,
-                                //         fontWeight: FontWeight.w400),
-                                //     barrierDismissible: false);
-                                //}
-                              }
-                            },
-                          ),
-                          SizedBox(
-                            height: 20.h,
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
+        return Stack(
+          children: [
+            buildScaffold(logic),
+            if (logic.status.isLoading)
+              Center(
+                child: CircularProgressIndicator(),
+              )
+          ],
         );
       },
+    );
+  }
+
+  Scaffold buildScaffold(EmailVerificationController logic) {
+    return Scaffold(
+      backgroundColor: AppColors.scaffoldBG,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                height: 33.h,
+              ),
+              logo(),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Welcome to the RITE Foundation",
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: Color(0xFF65019A),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Text(
+                  "Enter the Email Address",
+                  style: TextStyle(fontSize: 12.sp, color: Color(0xFF939F9C)),
+                ),
+              ),
+              SizedBox(
+                height: 180.h,
+              ),
+              StackContainer(
+                height: 240.h,
+                child: Form(
+                  key: logic.formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      CustomTextField(
+                        titlle: 'Enter Your Email Id',
+                        icon: Icon(
+                          Icons.vpn_key_outlined,
+                          color: AppColors.iconColor,
+                        ),
+                        controller: logic.emailController,
+                        keyboardType: null,
+                        obscureText: false,
+                        onChanged: (String) {},
+                        validationRules: ['required', 'email'],
+                        suffixIcon: null,
+                        textInputAction: null,
+                      ),
+                      InkWell(
+                        child: Container(
+                            height: 44.h,
+                            width: 290.w,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.w),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Color(0xffA202F6),
+                                      blurRadius: 3.w,
+                                      offset: Offset(1, 1)),
+                                  BoxShadow(
+                                      color: Color(0xff28003),
+                                      blurRadius: 1.w,
+                                      offset: Offset(-1, -1)),
+                                  BoxShadow(
+                                      color: Color(0xff28003E),
+                                      blurRadius: 1.w,
+                                      offset: Offset(2, -2)),
+                                  BoxShadow(
+                                      color: Color(0xff28003E),
+                                      blurRadius: 1.w,
+                                      offset: Offset(-2, 2)),
+                                  BoxShadow(
+                                      color: Color(0xffA202F6),
+                                      blurRadius: 1.w,
+                                      //blurStyle: BlurStyle.inner,
+                                      offset: Offset(-3, -3)),
+                                  BoxShadow(
+                                      color: Color(0xff28003E),
+                                      blurRadius: 1.w,
+                                      blurStyle: BlurStyle.inner,
+                                      offset: Offset(2, 2)),
+                                ],
+                                color: Color(0xff65019A)),
+                            child: Center(
+                              child: Text(
+                                'Send OTP',
+                                style: GoogleFonts.montserrat(
+                                    color: Colors.white, fontSize: 14.sp),
+                              ),
+                            )),
+                        onTap: () async {
+                          bool isValidated =
+                              logic.formKey.currentState!.validate();
+                          if (isValidated) {
+                            logic.emailVerification();
+
+                            // bool isOtpSend =
+                            //     await logic.emailVerification();
+                            // if (isOtpSend) {
+                            //   Get.toNamed('/reset_password_screen');
+
+                            // Get.defaultDialog(
+                            //     content: RegisterPinWidget(),
+                            //     title: 'OTP Verification',
+                            //     titleStyle: TextStyle(
+                            //         fontSize: 18,
+                            //         fontWeight: FontWeight.w400),
+                            //     barrierDismissible: false);
+
+                            //
+                            // Get.defaultDialog(
+                            //     content: OTPWidget(),
+                            //     title: 'OTP Verification',
+                            //     titleStyle: TextStyle(
+                            //         fontSize: 18,
+                            //         fontWeight: FontWeight.w400),
+                            //     barrierDismissible: false);
+                            //}
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

@@ -7,4 +7,18 @@ class ResetPasswordController extends GetxController with StateMixin {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confPasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  late String otp;
+  late String email;
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+
+    if (Get.arguments != null) {
+      otp = Get.arguments["otp"];
+      email = Get.arguments["email"];
+    }
+  }
 }

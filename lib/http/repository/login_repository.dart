@@ -6,6 +6,7 @@ import 'package:freeze_app/Model/core/snackbar.dart';
 import 'package:freeze_app/Model/register_model.dart';
 import 'package:freeze_app/http/dio.dart';
 import 'package:freeze_app/http/httpurls.dart';
+import 'package:freeze_app/http/response/GenericResponse.dart';
 import 'package:freeze_app/http/response/UserLoginResponse.dart';
 import 'package:freeze_app/http/response/UserRegisterResponse.dart';
 import 'package:freeze_app/shared/sharedservice.dart';
@@ -69,27 +70,27 @@ class LoginRepository {
           UserLoginResponse.fromJson(response.data as Map<String, dynamic>);
       return userLoginResponse;
     } else {
-      showSnackBar(context: Get.context!, message: "", bgColor: Colors.red);
+      AppUtils.showToast(response?.data["err"] ?? 'Something Went wrong',
+          color: Colors.red);
     }
-
     return userLoginResponse;
   }
 
-  Future<bool> sendEmailOtp(String? email) async {
+  Future<GenericResponse?> sendEmailOtp(String? email) async {
     String url = HttpUrls.getotp;
-    UserLoginResponse? userLoginResponse;
+    GenericResponse? genericResponse;
 
     final response = await dio().post(url, data: {"email": email});
 
     if (response.statusCode == 200) {
-      userLoginResponse =
-          UserLoginResponse.fromJson(response.data as Map<String, dynamic>);
+      genericResponse =
+          GenericResponse.fromJson(response.data as Map<String, dynamic>);
       AppUtils.showToast(response.data["success"]);
-      return true;
     } else {
-      showSnackBar(context: Get.context!, message: "", bgColor: Colors.red);
-      return false;
+      AppUtils.showToast(response?.data["err"] ?? 'Something Went wrong',
+          color: Colors.red);
     }
+    return genericResponse;
   }
 
   Future<bool> emailVerification(String? email) async {

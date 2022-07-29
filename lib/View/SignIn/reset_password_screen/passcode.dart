@@ -1,15 +1,20 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
+import 'package:freeze_app/View/SignIn/register_screen/email_verification_screen/email_verification_controller.dart';
+import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 class OTPWidget extends StatefulWidget {
   final bool? forgotPassword;
   final bool? register;
-  //Function? onSubmit;
-  OTPWidget({Key? key, this.forgotPassword, this.register}) : super(key: key);
+  Function onSubmit;
+
+  OTPWidget(this.onSubmit, {Key? key, this.forgotPassword, this.register})
+      : super(key: key);
 
   @override
   _OTPWidgetState createState() => _OTPWidgetState();
@@ -20,6 +25,32 @@ class _OTPWidgetState extends State<OTPWidget> {
   FocusNode textSecondFocusNode = FocusNode();
   FocusNode textThirdFocusNode = FocusNode();
   FocusNode textFourthFocusNode = FocusNode();
+
+  RxInt secondsRemaining = 60.obs;
+  RxBool enableResend = false.obs;
+
+  TextEditingController otpcontroller = TextEditingController();
+
+  late Timer timer;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    // Reducing the seconds remaining by using a timer
+    timer = Timer.periodic(const Duration(seconds: 1), (_) {
+      print(secondsRemaining.value);
+      if (secondsRemaining.value != 0) {
+        secondsRemaining.value--;
+      } else {
+        enableResend.value = true;
+
+        secondsRemaining.value = 60;
+        timer.cancel();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,28 +103,52 @@ class _OTPWidgetState extends State<OTPWidget> {
                   const SizedBox(
                     height: 26.84,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          '1:30 sec',
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.hintTextColor),
-                        ),
-                        Text(
-                          'Re-send OTP',
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.hintTextColor),
-                        )
-                      ],
-                    ),
-                  ),
+                  Obx(() {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "00:${secondsRemaining.value.toString()} sec",
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.hintTextColor),
+                          ),
+                          TextButton(
+                            child: Text(
+                              'Re-send OTP',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: secondsRemaining.value == 60
+                                      ? Colors.black
+                                      : Colors.grey),
+                            ),
+                            onPressed: secondsRemaining.value == 60
+                                ? () {
+                                    EmailVerificationController controller =
+                                        Get.find<EmailVerificationController>();
+                                    controller.emailVerification();
+                                    timer = Timer.periodic(
+                                        const Duration(seconds: 1), (_) {
+                                      print(secondsRemaining.value);
+                                      if (secondsRemaining.value != 0) {
+                                        secondsRemaining.value--;
+                                      } else {
+                                        enableResend.value = true;
+                                        secondsRemaining.value = 60;
+                                        timer.cancel();
+                                      }
+                                    });
+                                  }
+                                : null,
+                          )
+                        ],
+                      ),
+                    );
+                  }),
                   const SizedBox(
                     height: 16,
                   ),
@@ -149,43 +204,82 @@ class _OTPWidgetState extends State<OTPWidget> {
                   blurRadius: 10,
                   blurStyle: BlurStyle.inner),
             ]),
-        child: TextFormField(
-          keyboardType: TextInputType.number,
-          focusNode: focusNode,
-          decoration: const InputDecoration(
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.only(bottom: 0),
-            hintText: '*',
-            hintStyle: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
-          ),
-          inputFormatters: [
-            LengthLimitingTextInputFormatter(1),
-            FilteringTextInputFormatter.digitsOnly,
-          ],
-          onChanged: (val) {
-            if (val.length == 1) {
-              if (index == 1) textSecondFocusNode.requestFocus();
-              if (index == 2) textThirdFocusNode.requestFocus();
-              if (index == 3) textFourthFocusNode.requestFocus();
-              if (index == 4) {
-                if (widget.forgotPassword != null) {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                }
-                textFourthFocusNode.unfocus();
-              }
-            }
-            if (val.isEmpty) {
-              if (index == 1) textFirstFocusNode.unfocus();
-              if (index == 2) textFirstFocusNode.requestFocus();
-              if (index == 3) textSecondFocusNode.requestFocus();
-              if (index == 4) textThirdFocusNode.unfocus();
-            }
-          },
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 24),
-          showCursor: false,
-        ),
+        // child: Obx(
+        //       () =>PinCodeTextField(
+        //     enablePinAutofill: false,
+        //     appContext: context,
+        //     onChanged: (String value) {
+        //       // user.otp = value;
+        //     },
+        //     validator: (String? value) {},
+        //     onCompleted: (String value) async {
+        //       AppUtils.hideKeyBoard(context);
+        //       if (controller.otpTextController.text.length == 6) {
+        //         bool isOtpVerified =
+        //             await controller.verifyOtp() ?? false;
+        //
+        //         // FIXME so far otp generate api is not working so 111111 is hardcoded to route next page
+        //
+        //         if (isOtpVerified ||
+        //             controller.otpTextController.text.trim() ==
+        //                 "111111") {
+        //           controller.timer.cancel();
+        //
+        //           if (controller.userType.value ==
+        //               UserType.newUser) {
+        //             Get.toNamed('/terms_conditions_screen');
+        //           } else if (controller.userType.value ==
+        //               UserType.returningUser) {
+        //             Get.toNamed('/set_pin_screen');
+        //           }
+        //         } else {
+        //           controller.updateErrorValue();
+        //           controller.otpTextController.clear();
+        //           if (controller.attemptCount.value == 3) {
+        //             AppUtils.showErrorSnackBar(context,
+        //                 'Your number has been blocked for 6 hours contact support.');
+        //             controller.updateIscontact();
+        //           } else {
+        //             AppUtils.showSnackBar(context,
+        //                 '\n${3 - controller.attemptCount.value} attempts remaining\n');
+        //           }
+        //           if (controller.attemptCount.value != 3) {
+        //             controller.increaseAttemptCount();
+        //           }
+        //         }
+        //       }
+        //     },
+        //     length: 6,
+        //     textStyle: Theme.of(context)
+        //         .textTheme
+        //         .headline5!
+        //         .copyWith(
+        //         color:
+        //         ColorResource.getBlackTextColor(context)),
+        //     animationType: AnimationType.scale,
+        //     animationDuration: const Duration(milliseconds: 300),
+        //     keyboardType: TextInputType.number,
+        //     controller: controller.otpTextController,
+        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //     obscureText: true,
+        //     pinTheme: PinTheme(
+        //         shape: PinCodeFieldShape.box,
+        //         borderWidth: 1,
+        //         borderRadius: BorderRadius.circular(8),
+        //         inactiveColor: controller.errorValue.value
+        //             ? ColorResource.colorF92538
+        //             : ColorResource.color222222,
+        //         selectedColor: controller.errorValue.value
+        //             ? ColorResource.colorF92538
+        //             : ColorResource.color222222,
+        //         activeColor: controller.errorValue.value
+        //             ? ColorResource.colorF92538
+        //             : ColorResource.color222222,
+        //         fieldHeight: 55,
+        //         fieldWidth: 50,
+        //         errorBorderColor: ColorResource.colorF92538),
+        //   ),
+        // ),,
       );
 
   Widget _closeBox() => Container(

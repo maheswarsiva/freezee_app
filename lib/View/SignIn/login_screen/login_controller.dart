@@ -7,6 +7,15 @@ class LoginController extends GetxController with StateMixin {
   TextEditingController emailTextController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  Rx<bool> showPassword = false.obs;
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    change(null, status: RxStatus.success());
+  }
+
   void login() async {
     change(null, status: RxStatus.loading());
 
@@ -14,9 +23,10 @@ class LoginController extends GetxController with StateMixin {
         .login(emailTextController.text.trim(), passwordController.text.trim());
 
     if (response != null) {
+      change(null, status: RxStatus.success());
       Get.toNamed('/home_tab');
-    } else {}
-
-    change(null, status: RxStatus.success());
+    } else {
+      change(null, status: RxStatus.error());
+    }
   }
 }
