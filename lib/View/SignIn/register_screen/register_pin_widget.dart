@@ -227,7 +227,7 @@ class _RegisterPinWidgetState extends State<RegisterPinWidget> {
                                   UserRegister userModel = UserRegister(
                                       name: widget.user!.name,
                                       email: widget.user!.email,
-                                      password: widget.user!.password,
+                                      password: passwordController.text.trim(),
                                       phone: widget.user!.phone,
                                       aadhar: widget.user!.aadhar,
                                       pan: widget.user!.pan,
@@ -238,7 +238,7 @@ class _RegisterPinWidgetState extends State<RegisterPinWidget> {
                                   RegisterController registerController =
                                       Get.find<RegisterController>();
 
-                                  RegisterController.registerUser(userModel);
+                                  registerController.registerUser(userModel);
                                 }
                               },
                         child: Container(

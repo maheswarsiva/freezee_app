@@ -147,29 +147,6 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                               logic.formKey.currentState!.validate();
                           if (isValidated) {
                             logic.sendEmailOtp();
-
-                            // bool isOtpSend =
-                            //     await logic.emailVerification();
-                            // if (isOtpSend) {
-                            //   Get.toNamed('/reset_password_screen');
-
-                            // Get.defaultDialog(
-                            //     content: RegisterPinWidget(),
-                            //     title: 'OTP Verification',
-                            //     titleStyle: TextStyle(
-                            //         fontSize: 18,
-                            //         fontWeight: FontWeight.w400),
-                            //     barrierDismissible: false);
-
-                            //
-                            // Get.defaultDialog(
-                            //     content: OTPWidget(),
-                            //     title: 'OTP Verification',
-                            //     titleStyle: TextStyle(
-                            //         fontSize: 18,
-                            //         fontWeight: FontWeight.w400),
-                            //     barrierDismissible: false);
-                            //}
                           }
                         },
                       ),

@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
 import 'package:freeze_app/View/SignIn/register_screen/register_controller.dart';
-import 'package:freeze_app/View/SignIn/register_screen/register_pin_widget.dart';
 import 'package:freeze_app/widgets/apptheme.dart';
 import 'package:freeze_app/widgets/stackContainer.dart';
 import 'package:freeze_app/widgets/textfield.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 
 import '../../../Model/register_model.dart';
 import '../../../widgets/logo.dart';
@@ -288,13 +286,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       professionalDetails:
                                           logic.professionalController.text,
                                       id: '');
-                                  Navigator.push(
-                                      context,
-                                      PageTransition(
-                                          type: PageTransitionType.rightToLeft,
-                                          child: RegisterPinWidget(user: users),
-                                          duration: const Duration(
-                                              milliseconds: 250)));
+                                  logic.registerUser(users);
+
+                                  // Navigator.push(
+                                  //     context,
+                                  //     PageTransition(
+                                  //         type: PageTransitionType.rightToLeft,
+                                  //         child: RegisterPinWidget(user: users),
+                                  //         duration: const Duration(
+                                  //             milliseconds: 250)));
                                 }
                               }),
                           SizedBox(
