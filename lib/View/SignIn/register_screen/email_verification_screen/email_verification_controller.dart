@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:freeze_app/View/SignIn/reset_password_screen/passcode.dart';
+import 'package:freeze_app/View/SignIn/reset_password_screen/otp_widget.dart';
 import 'package:freeze_app/http/repository/login_repository.dart';
 import 'package:freeze_app/http/response/GenericResponse.dart';
 import 'package:get/get.dart';
@@ -16,7 +16,7 @@ class EmailVerificationController extends GetxController with StateMixin {
     change(null, status: RxStatus.success());
   }
 
-  void emailVerification() async {
+  void sendEmailOtp() async {
     change(null, status: RxStatus.loading());
     GenericResponse? response =
         await LoginRepository().sendEmailOtp(emailController.text.trim());
@@ -25,7 +25,8 @@ class EmailVerificationController extends GetxController with StateMixin {
 
       Get.defaultDialog(
           content: OTPWidget((value) {
-            Get.toNamed('/reset_password_screen', arguments: {
+            Get.back();
+            Get.offAndToNamed('/reset_password_screen', arguments: {
               'otp': value,
               'email': emailController.text.trim()
             });

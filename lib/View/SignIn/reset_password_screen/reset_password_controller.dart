@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:freeze_app/http/repository/login_repository.dart';
+import 'package:freeze_app/http/response/GenericResponse.dart';
 import 'package:get/get.dart';
 
 class ResetPasswordController extends GetxController with StateMixin {
@@ -19,6 +21,21 @@ class ResetPasswordController extends GetxController with StateMixin {
     if (Get.arguments != null) {
       otp = Get.arguments["otp"];
       email = Get.arguments["email"];
+    }
+
+    change(null, status: RxStatus.success());
+  }
+
+  void changePassword() async {
+    change(null, status: RxStatus.loading());
+    GenericResponse? response = await LoginRepository()
+        .changePassword(email, otp, passwordController.text.trim());
+    if (response != null) {
+      change(null, status: RxStatus.success());
+
+      Get.offAllNamed('/');
+    } else {
+      change(null, status: RxStatus.error());
     }
   }
 }

@@ -7,6 +7,7 @@ import 'package:freeze_app/Model/register_model.dart';
 import 'package:freeze_app/http/dio.dart';
 import 'package:freeze_app/http/httpurls.dart';
 import 'package:freeze_app/http/response/GenericResponse.dart';
+import 'package:freeze_app/http/response/OtpVerificationResponse.dart';
 import 'package:freeze_app/http/response/UserLoginResponse.dart';
 import 'package:freeze_app/http/response/UserRegisterResponse.dart';
 import 'package:freeze_app/shared/sharedservice.dart';
@@ -108,5 +109,42 @@ class LoginRepository {
       showSnackBar(context: Get.context!, message: "", bgColor: Colors.red);
       return false;
     }
+  }
+
+  Future<OtpVerificationResponse?> otpVerification(
+      String email, String otp, String password) async {
+    String url = HttpUrls.authVerify;
+    OtpVerificationResponse? otpVerificationResponse;
+
+    final response = await dio().post(url, data: {"email": email});
+
+    if (response.statusCode == 200) {
+      otpVerificationResponse = OtpVerificationResponse.fromJson(
+          response.data as Map<String, dynamic>);
+      //AppUtils.showToast(response.data["success"]);
+    } else {
+      AppUtils.showToast(response?.data["err"] ?? 'Something Went wrong',
+          color: Colors.red);
+    }
+    return otpVerificationResponse;
+  }
+
+  Future<GenericResponse?> changePassword(
+      String email, String otp, String password) async {
+    String url = HttpUrls.changepass;
+    GenericResponse? genericResponse;
+
+    final response = await dio()
+        .post(url, data: {"email": email, "password": password, "otp": otp});
+
+    if (response.statusCode == 200 && response.data["success"] != null) {
+      genericResponse =
+          GenericResponse.fromJson(response.data as Map<String, dynamic>);
+      AppUtils.showToast(response.data["success"]);
+    } else {
+      AppUtils.showToast(response?.data["err"] ?? 'Something Went wrong',
+          color: Colors.red);
+    }
+    return genericResponse;
   }
 }

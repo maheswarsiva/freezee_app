@@ -8,7 +8,7 @@
 // import 'package:page_transition/page_transition.dart';
 
 // import '../../../Model/register_model.dart';
-// import '../../../widgets/passcode.dart';
+// import '../../../widgets/otp_widget.dart';
 
 // class ForgotPasswordController extends GetxController with StateMixin {
 //   TextEditingController controller = TextEditingController();
@@ -45,7 +45,6 @@
 
 //   void verifyOtp(String otp) async {
 //     change(null, status: RxStatus.loading());
-
 
 //     var response = await Authenticate_user().verifyOtp(id, otp);
 
@@ -98,5 +97,4 @@
 //     }
 //   }
 
-  
 // }

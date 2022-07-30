@@ -12,4 +12,8 @@ class AppUtils {
         textColor: Colors.white,
         fontSize: 14.0);
   }
+
+  static void hideKeyBoard(BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
+  }
 }

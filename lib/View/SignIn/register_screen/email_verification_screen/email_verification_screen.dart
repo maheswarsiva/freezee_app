@@ -146,7 +146,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                           bool isValidated =
                               logic.formKey.currentState!.validate();
                           if (isValidated) {
-                            logic.emailVerification();
+                            logic.sendEmailOtp();
 
                             // bool isOtpSend =
                             //     await logic.emailVerification();
