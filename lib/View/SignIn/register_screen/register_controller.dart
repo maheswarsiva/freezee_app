@@ -56,7 +56,8 @@ class RegisterController extends GetxController with StateMixin {
             Get.back();
             Get.offAndToNamed('/reset_password_screen', arguments: {
               'otp': value,
-              'email': emailController.text.trim()
+              'email': emailController.text.trim(),
+              "isCreatePassword": true
             });
           }),
           title: 'OTP Verification',

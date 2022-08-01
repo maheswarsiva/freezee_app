@@ -136,4 +136,23 @@ class LoginRepository {
     }
     return genericResponse;
   }
+
+  Future<GenericResponse?> createPassword(
+      String email, String otp, String password) async {
+    String url = HttpUrls.authVerify;
+    GenericResponse? genericResponse;
+
+    final response = await dio()
+        .post(url, data: {"email": email, "password": password, "otp": otp});
+
+    if (response.statusCode == 200 && response.data["success"] != null) {
+      genericResponse =
+          GenericResponse.fromJson(response.data as Map<String, dynamic>);
+      AppUtils.showToast(response.data["success"]);
+    } else {
+      AppUtils.showToast(response?.data["err"] ?? 'Something Went wrong',
+          color: Colors.red);
+    }
+    return genericResponse;
+  }
 }

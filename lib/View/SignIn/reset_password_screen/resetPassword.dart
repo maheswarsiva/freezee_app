@@ -170,7 +170,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                     AppUtils.showToast("Password mismatch",
                                         color: Colors.red);
                                   } else {
-                                    logic.changePassword();
+                                    if (logic.isCreatePassword) {
+                                      logic.createPassword();
+                                    } else {
+                                      logic.changePassword();
+                                    }
                                   }
                                 },
                               ),

@@ -12,6 +12,7 @@ class ResetPasswordController extends GetxController with StateMixin {
 
   late String otp;
   late String email;
+  late bool isCreatePassword;
 
   @override
   void onInit() {
@@ -21,6 +22,7 @@ class ResetPasswordController extends GetxController with StateMixin {
     if (Get.arguments != null) {
       otp = Get.arguments["otp"];
       email = Get.arguments["email"];
+      isCreatePassword = Get.arguments["isCreatePassword"];
     }
 
     change(null, status: RxStatus.success());
@@ -30,6 +32,19 @@ class ResetPasswordController extends GetxController with StateMixin {
     change(null, status: RxStatus.loading());
     GenericResponse? response = await LoginRepository()
         .changePassword(email, otp, passwordController.text.trim());
+    if (response != null) {
+      change(null, status: RxStatus.success());
+
+      Get.offAllNamed('/');
+    } else {
+      change(null, status: RxStatus.error());
+    }
+  }
+
+  void createPassword() async {
+    change(null, status: RxStatus.loading());
+    GenericResponse? response = await LoginRepository()
+        .createPassword(email, otp, passwordController.text.trim());
     if (response != null) {
       change(null, status: RxStatus.success());
 
