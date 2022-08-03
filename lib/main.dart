@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:freeze_app/View/SignIn/home_screen/bottom_nav.dart';
 import 'package:freeze_app/router.dart';
-import 'package:freeze_app/shared/sharedservice.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -12,14 +10,11 @@ import 'View/Bottomnavpage/List_of_pages/splashscreen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await PreferenceHelper.getPreference("email")
-      .then((value) => runApp(MyApp(value != null)));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp(this.isLoggedIn, {Key? key}) : super(key: key);
-
-  bool isLoggedIn;
+  MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -46,6 +41,6 @@ class MyApp extends StatelessWidget {
               ),
               getPages: AppRoutes.routes,
             ),
-        child: isLoggedIn ? HomeTabScreen() : SplashScreen());
+        child: SplashScreen());
   }
 }

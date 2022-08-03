@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../SignIn/home_screen/bottom_nav.dart';
+import '../../../home_tab_screen/home_tab_screen.dart';
 
 class Subcription extends StatefulWidget {
   const Subcription({Key? key}) : super(key: key);

@@ -4,8 +4,8 @@ import 'package:page_transition/page_transition.dart';
 
 import '../../../Model/Theme/app_color.dart';
 import '../../../splashscrreen_details.dart';
-import '../../SignIn/home_screen/bottom_nav.dart';
 import '../../SignIn/login_screen/login_screen.dart';
+import '../../home_tab_screen/home_tab_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   bool visible = false;
-  bool isLoding = false;
+  bool isLoggedIn = true;
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
             context,
             PageTransition(
                 type: PageTransitionType.fade,
-                child: isLoding ? const HomeTabScreen() : LoginScreen(),
+                child: isLoggedIn ? const HomeTabScreen() : LoginScreen(),
                 duration: const Duration(milliseconds: 350))));
     WidgetsBinding.instance
         .addPostFrameCallback((_) => setState(() => visible = true));

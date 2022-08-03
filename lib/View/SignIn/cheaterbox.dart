@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 import '../../Model/cheaterboxModel.dart';
-import 'home_screen/bottom_nav.dart';
+import '../home_tab_screen/home_tab_screen.dart';
 
 class ChearterBox extends StatefulWidget {
   const ChearterBox({Key? key}) : super(key: key);

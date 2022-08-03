@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:freeze_app/Model/Theme/app_color.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'home_screen/bottom_nav.dart';
+import '../home_tab_screen/home_tab_screen.dart';
 
 class Page7 extends StatefulWidget {
   const Page7({Key? key}) : super(key: key);

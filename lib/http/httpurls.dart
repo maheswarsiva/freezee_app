@@ -12,6 +12,6 @@ class HttpUrls {
   static const String login = "/auth/login";
   static const String otp = "/auth/getotp";
   static const String changepass = "/auth/chngpwd";
-  static const String usersdatanumbers = "/get/role";
+  static const String getRoles = "/get/role";
   static const String getotp = "/auth/getotp";
 }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:freeze_app/View/Bottomnavpage/List_of_pages/Profile_page/profile.dart';
+import 'package:freeze_app/View/Bottomnavpage/List_of_pages/Report/report.dart';
+import 'package:freeze_app/View/Bottomnavpage/List_of_pages/Wallet_page/Wallet.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import '../../../Model/Theme/app_color.dart';
-import '../../Bottomnavpage/List_of_pages/Home_Pages/Innovation_page.dart';
-import '../../Bottomnavpage/List_of_pages/Profile_page/profile.dart';
-import '../../Bottomnavpage/List_of_pages/Report/report.dart';
-import '../../Bottomnavpage/List_of_pages/Wallet_page/Wallet.dart';
+import '../home_screen/home_screen.dart';
 
 class HomeTabScreen extends StatefulWidget {
   const HomeTabScreen({Key? key}) : super(key: key);

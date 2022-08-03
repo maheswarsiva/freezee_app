@@ -4,7 +4,7 @@
 // import 'package:freeze_app/app_color.dart';
 // import 'package:google_fonts/google_fonts.dart';
 //
-// import 'View/Bottomnavpage/bottom_nav.dart';
+// import 'View/Bottomnavpage/home_tab_screen.dart';
 //
 // class Advertise extends StatefulWidget {
 //   const Advertise({Key? key}) : super(key: key);

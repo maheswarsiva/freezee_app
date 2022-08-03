@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'Model/Theme/app_color.dart';
 import 'View/Bottomnavpage/List_of_pages/Profile_page/transaction_details.dart';
-import 'View/SignIn/home_screen/bottom_nav.dart';
+import 'View/home_tab_screen/home_tab_screen.dart';
 
 class Qusetion_details extends StatefulWidget {
   const Qusetion_details({Key? key}) : super(key: key);
