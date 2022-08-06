@@ -60,7 +60,7 @@ class LoginRepository {
           UserLoginResponse.fromJson(response.data as Map<String, dynamic>);
       return userLoginResponse;
     } else {
-      AppUtils.showToast(response?.data["err"] ?? 'Something Went wrong',
+      AppUtils.showToast(response.data["err"] ?? 'Something Went wrong',
           color: Colors.red);
     }
     return userLoginResponse;
@@ -77,7 +77,7 @@ class LoginRepository {
           GenericResponse.fromJson(response.data as Map<String, dynamic>);
       AppUtils.showToast(response.data["success"]);
     } else {
-      AppUtils.showToast(response?.data["err"] ?? 'Something Went wrong',
+      AppUtils.showToast(response.data["err"] ?? 'Something Went wrong',
           color: Colors.red);
     }
     return genericResponse;
@@ -112,7 +112,7 @@ class LoginRepository {
           response.data as Map<String, dynamic>);
       //AppUtils.showToast(response.data["success"]);
     } else {
-      AppUtils.showToast(response?.data["err"] ?? 'Something Went wrong',
+      AppUtils.showToast(response.data["err"] ?? 'Something Went wrong',
           color: Colors.red);
     }
     return otpVerificationResponse;
@@ -131,7 +131,7 @@ class LoginRepository {
           GenericResponse.fromJson(response.data as Map<String, dynamic>);
       AppUtils.showToast(response.data["success"]);
     } else {
-      AppUtils.showToast(response?.data["err"] ?? 'Something Went wrong',
+      AppUtils.showToast(response.data["err"] ?? 'Something Went wrong',
           color: Colors.red);
     }
     return genericResponse;
@@ -150,7 +150,7 @@ class LoginRepository {
           GenericResponse.fromJson(response.data as Map<String, dynamic>);
       AppUtils.showToast(response.data["success"]);
     } else {
-      AppUtils.showToast(response?.data["err"] ?? 'Something Went wrong',
+      AppUtils.showToast(response.data["err"] ?? 'Something Went wrong',
           color: Colors.red);
     }
     return genericResponse;

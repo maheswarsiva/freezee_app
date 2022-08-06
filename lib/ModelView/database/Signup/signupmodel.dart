@@ -1,20 +1,20 @@
 class SignUpmodel {
-  String ? name;
-  String ?email;
+  String? name;
+  String? email;
   String? password;
-  String ?aadhar;
-  String ?phone;
-  String ? pan;
-  String ? professionalDetails;
+  String? aadhar;
+  String? phone;
+  String? pan;
+  String? professionalDetails;
 
   SignUpmodel(
       {this.name,
-        this.email,
-        this.password,
-        this.aadhar,
-        this.phone,
-        this.pan,
-        this.professionalDetails});
+      this.email,
+      this.password,
+      this.aadhar,
+      this.phone,
+      this.pan,
+      this.professionalDetails});
 
   SignUpmodel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
